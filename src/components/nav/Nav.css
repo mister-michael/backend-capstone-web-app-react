@@ -1,0 +1,12 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-link {
+    padding: 0px 5px;
+}
+
+.nav-link:hover {
+    color: red
+}
