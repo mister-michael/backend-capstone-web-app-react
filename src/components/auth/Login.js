@@ -1,9 +1,20 @@
 import React, {useState} from 'react';
-import AuthMethods from './AuthMethods';
+import AuthManager from '../../modules/AuthManager';
+import AuthMethods from './AuthMethods'
 
 const Login = props => {
     const [credentials, setCredentials] = useState({username:"", password:""});
     const {login} = AuthMethods();
+
+    // const login = credentials => {
+    //     return AuthManager.loginUser(credentials)
+    //         .then(parsedResponse => {
+    //             if ("valid" in parsedResponse && parsedResponse.valid && "token" in parsedResponse) {
+    //                 sessionStorage.setItem("user-token", parsedResponse.token)
+    //                 props.setIsAuthenticated(true)
+    //             }
+    //         })
+    // }
 
     const handleFieldChange = (evt) => {
         const stateToChange = {...credentials};
@@ -36,6 +47,11 @@ const Login = props => {
             id="password" 
             placeholder="password"
             />
+            <button 
+            type="submit"
+            id="submit-button"
+            onClick={handleLogin}
+            >Log In</button>
         </div>
     )
 }
