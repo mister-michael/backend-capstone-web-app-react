@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import ProjectM from './ProjectM'
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router>
     <ProjectM />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById('root')
 );
 
