@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { Route, Redirect } from "react-router-dom";
 import Login from './auth/Login';
 import Register from './auth/Register';
-import AuthMethods from './auth/AuthMethods'
+import AuthMethods from './auth/AuthMethods';
+import Photoshoot from './photoshoot/Photoshoot';
 
 const AppViews = props => {
 
@@ -21,6 +22,13 @@ const AppViews = props => {
             path="/register"
             render={props => {
                 return <Register {...props} />
+            }}
+            />
+            <Route
+            exact
+            path="/"
+            render={props => {
+                if (isAuthenticated()) {return <Photoshoot {...props} />}
             }}
             />
         </React.Fragment>

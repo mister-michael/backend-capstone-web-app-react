@@ -5,13 +5,14 @@ import AuthMethods from '../auth/AuthMethods'
 
 const Nav = props => {
 
-    const {logout} = AuthMethods()
+    const {logout, isAuthenticated} = AuthMethods()
 
     const handleLogout = () => {
         logout();
         // props.history.push({pathname: "/login"})
     }
 
+    if (isAuthenticated()){
     return (
         <div className="nav-container">
             <Link className="nav-link" to="/">PS</Link>
@@ -23,7 +24,9 @@ const Nav = props => {
                 to="/login"
                 onClick={handleLogout}>XX</Link>
         </div>
-    )
+    )} else {
+        return null
+    }
 };
 
 export default withRouter(Nav)
