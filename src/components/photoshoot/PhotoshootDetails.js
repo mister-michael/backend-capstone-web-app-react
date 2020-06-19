@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ApiManager from '../../modules/ApiManager';
-import EquipmentDetails from '../equipment/EquipmentDetails';
+import EquipmentListItem from '../equipment/EquipmentListItem';
+import StaffListItem from '../staff/StaffListItem';
 import './Photoshoot.css'
 
 const PhotoshootDetails = props => {
 
     const [photoshoot, setPhotoshoot] = useState(null)
     const [equipment, setEquipment] = useState([])
+    const [staff, setStaff] = useState([])
 
 
     async function fetchPhotoshoot() {
@@ -17,20 +19,22 @@ const PhotoshootDetails = props => {
             })
     };
 
-    async function fetchEquipment() {
+    async function fetchPhotoshootEquipment() {
         await ApiManager.queryPhotoshootEquipment(props.photoshootId)
             .then(res => {
                 console.log(res)
                 setEquipment(res)
             })
+    };
+
+    async function fetchPhotoShootStaff() {
+        await ApiManager.queryPhotoshootStaff(props.photoshootId)
+            .then(res => {
+                console.log(res)
+                setStaff(res)
+            });
     }
 
-    function clientDetailsUrl() {
-        if (photoshoot) {
-            const url = photoshoot.client.url.split("http://localhost:8000");
-            return url[1]
-        }
-    }
     function createPhotoshootContent() {
         if (photoshoot) {
             return (
@@ -51,19 +55,60 @@ const PhotoshootDetails = props => {
         }
     }
 
+    function clientDetailsUrl() {
+        if (photoshoot) {
+            const url = photoshoot.client.url.split("http://localhost:8000");
+            return url[1]
+        }
+    }
+
+
+    function employeeSplitId() {
+        if (staff.employee) {
+            const splitIdFromUrl = staff.employee.url.split("http://localhost:8000/employees/");
+            return splitIdFromUrl[1]
+        }
+    }
+
+    function employeeSplitUrl() {
+        if (staff.employee) {
+            const splitEmployeeUrl = staff.employee.url.split("http://localhost:8000")
+            return splitEmployeeUrl[1]
+        }
+    }
+
+    function createStaffContent() {
+        if (staff.employee) {
+            return staff.map(res => <div>{res.id}</div>)
+        }
+    }
+
     useEffect(() => {
         fetchPhotoshoot()
-        fetchEquipment()
+        fetchPhotoshootEquipment()
+        fetchPhotoShootStaff()
+        employeeSplitId()
     }, [])
 
     useEffect(() => {
         createPhotoshootContent()
     }, [photoshoot])
 
+    useEffect(() => {
+        createStaffContent()
+    }, [staff])
+
     return (
         <>
             {createPhotoshootContent()}
-            {equipment.map(res => <EquipmentDetails equipment={res} key={res.id} />)}
+            {equipment.map(res => <EquipmentListItem equipment={res} key={res.id} />)}
+            {/* {createStaffContent()} */}
+            {staff.map(res =>
+                <StaffListItem
+                    staff={res}
+                    employeeId={employeeSplitId()}
+                    onClick={() => props.history.push(`${clientDetailsUrl()}`)}
+                />)}
         </>
     )
 }

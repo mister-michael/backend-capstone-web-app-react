@@ -1,7 +1,7 @@
 import React from 'react';
 import '../photoshoot/Photoshoot.css';
 
-const EquipmentDetails = props => {
+const EquipmentListItem = props => {
 
     return (
         <>
@@ -13,4 +13,4 @@ const EquipmentDetails = props => {
     )
 }
 
-export default EquipmentDetails
+export default EquipmentListItem
