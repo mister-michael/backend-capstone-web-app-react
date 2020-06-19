@@ -1,12 +1,111 @@
 .nav-container {
+    width: 55px;
+    height: 55px;
     display: flex;
     flex-direction: row;
+    padding: 10px;
 }
 
 .nav-link {
-    padding: 0px 5px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0);
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+/* nav-ps PHOTOSHOOT LINK */
+#nav-ps {
+    background-image: linear-gradient(-60deg, rgba(252, 51, 51, 0.865) 30%, rgb(255, 255, 255) 100%);
+}
+#nav-ps:hover {
+    background-image: linear-gradient(-60deg, rgba(188, 188, 188, 0.865) 10%, rgb(255, 255, 255) 100%);
+}
+
+/* nav-eq EQUIPMENT LINK */
+#nav-eq {
+    background-image: linear-gradient(-60deg, rgba(250, 155, 39, 0.865) 30%, rgb(255, 255, 255) 100%);
+}
+#nav-eq:hover {
+    background-image: linear-gradient(-60deg, rgba(188, 188, 188, 0.865) 10%, rgb(255, 255, 255) 100%);
+}
+
+/* nav-cl CLIENT LINK */
+#nav-cl {
+    background-image: linear-gradient(-60deg, rgba(225, 225, 34, 0.879) 30%, rgb(255, 255, 255) 100%);
+}
+#nav-cl:hover {
+    background-image: linear-gradient(-60deg, rgba(188, 188, 188, 0.865) 10%, rgb(255, 255, 255) 100%);
+}
+
+/* nav-st STAFF LINK */
+#nav-st {
+    background-image: linear-gradient(-60deg, rgba(81, 247, 114, 0.865) 30%, rgb(255, 255, 255) 100%);
+}
+#nav-st:hover {
+    background-image: linear-gradient(-60deg, rgba(188, 188, 188, 0.865) 10%, rgb(255, 255, 255) 100%);
+}
+
+/* nav-xx LOGOUT LINK */
+#nav-xx {
+    background-image: linear-gradient(-60deg, rgba(131, 148, 247, 0.865) 30%, rgb(255, 255, 255) 100%);
+}
+#nav-xx:hover {
+    background-image: linear-gradient(-60deg, rgba(188, 188, 188, 0.865) 10%, rgb(255, 255, 255) 100%);
 }
 
 .nav-link:hover {
     color: red
 }
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 5px;
+    border-radius: 50%;
+    box-shadow: 
+    /* link shadow */
+    0px 0px 2px #5f5f5f,
+    /* offset */
+    0px 0px 0px 3px #ecf0f3,
+    /*bottom right */
+    8px 8px 15px #a7aaaf,
+    /* top left */
+    -8px -8px 15px #ffffff
+    ;
+}
+
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+    width: 1.5em;
+    height: 3em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #ffffff;;
+    stroke-width: 25px;
+}
+/* .svg-icon path:hover,
+.svg-icon polygon:hover,
+.svg-icon rect:hover {
+    fill: #000000;;
+    stroke-width: 25px;
+} */
+
+.svg-icon circle {
+    stroke: #ffffff;
+    stroke-width: 5px;
+}
+

@@ -1,12 +1,12 @@
 .login-container {
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin: 10% 5% 5% 5%;
 }
 
 .login-div {
-        width:430px;
-        height: 300px;
+        max-width:430px;
+        max-height: 350px;
         padding: 0px 35px 35px 35px;
         border-radius: 40px;
         background: #ecf0f3;
@@ -41,6 +41,12 @@ input::placeholder {
     padding-left: 20px;
 }
 
+input[type=text], input[type=password] {
+    margin-left: 20px;
+    font-size: x-large;
+    align-content: center;
+}
+
 /* SIGN IN */
 
 .signin-button {
@@ -53,9 +59,11 @@ input::placeholder {
     font-size: 20px;
     font-weight: 700;
     font-family: 'Lato', sans-serif;
-    color:#fff;
+    /* color:#fff; */
+    color:rgb(210, 210, 210);
     text-align: center;
-    background: #24cfaa;
+    /* background: #24cfaa; */
+    background: #e2e7e6;
     box-shadow: 3px 3px 8px #b1b1b1,
                 -3px -3px 8px #ffffff;
     transition: 0.5s;

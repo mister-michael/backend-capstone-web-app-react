@@ -58,7 +58,7 @@ const Login = props => {
                         type="submit"
                         id="login-button"
                         className="signin-button"
-                        onClick={handleLogin}>say cheese</button>
+                        onClick={handleLogin}>O</button>
                 </div>
             </div>
         </div>
