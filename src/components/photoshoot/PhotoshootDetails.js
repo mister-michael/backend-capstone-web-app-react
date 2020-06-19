@@ -63,12 +63,7 @@ const PhotoshootDetails = props => {
     }
 
 
-    function employeeSplitId() {
-        if (staff.employee) {
-            const splitIdFromUrl = staff.employee.url.split("http://localhost:8000/employees/");
-            return splitIdFromUrl[1]
-        }
-    }
+  
 
     function employeeSplitUrl() {
         if (staff.employee) {
@@ -87,7 +82,6 @@ const PhotoshootDetails = props => {
         fetchPhotoshoot()
         fetchPhotoshootEquipment()
         fetchPhotoShootStaff()
-        employeeSplitId()
     }, [])
 
     useEffect(() => {
@@ -106,8 +100,7 @@ const PhotoshootDetails = props => {
             {staff.map(res =>
                 <StaffListItem
                     staff={res}
-                    employeeId={employeeSplitId()}
-                    onClick={() => props.history.push(`${clientDetailsUrl()}`)}
+                    onClick={() => props.history.push(`${employeeSplitUrl()}`)}
                 />)}
         </>
     )
