@@ -20,7 +20,7 @@ const StaffDetails = props => {
 
     useEffect(() => {
         fetchEmployee()
-    }, [employee.user])
+    }, [])
 
     return (
         <>
