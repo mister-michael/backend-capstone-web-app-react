@@ -5,6 +5,7 @@ import Register from './auth/Register';
 import AuthMethods from './auth/AuthMethods';
 import Photoshoot from './photoshoot/Photoshoot';
 import PhotoshootDetails from './photoshoot/PhotoshootDetails';
+import StaffDetails from './staff/StaffDetails';
 
 
 const AppViews = props => {
@@ -40,6 +41,17 @@ const AppViews = props => {
                 if (isAuthenticated()) {
                     return <PhotoshootDetails 
                     photoshootId={parseInt(props.match.params.photoshootId)} 
+                    {...props} />
+                }
+            }}
+            />
+            <Route
+            exact
+            path="/employees/:employeeId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {
+                    return <StaffDetails 
+                    employeeId={parseInt(props.match.params.employeeId)} 
                     {...props} />
                 }
             }}

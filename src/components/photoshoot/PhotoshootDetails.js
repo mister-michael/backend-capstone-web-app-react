@@ -9,6 +9,7 @@ const PhotoshootDetails = props => {
     const [photoshoot, setPhotoshoot] = useState(null)
     const [equipment, setEquipment] = useState([])
     const [staff, setStaff] = useState([])
+    const [employeeUrlState, setEmployeeUrlState] = useState("")
 
 
     async function fetchPhotoshoot() {
@@ -63,11 +64,13 @@ const PhotoshootDetails = props => {
     }
 
 
-  
+
 
     function employeeSplitUrl() {
         if (staff.employee) {
             const splitEmployeeUrl = staff.employee.url.split("http://localhost:8000")
+            console.log(splitEmployeeUrl[1])
+            setEmployeeUrlState(splitEmployeeUrl)
             return splitEmployeeUrl[1]
         }
     }
@@ -83,25 +86,40 @@ const PhotoshootDetails = props => {
         fetchPhotoshootEquipment()
         fetchPhotoShootStaff()
     }, [])
-
+    
     useEffect(() => {
         createPhotoshootContent()
     }, [photoshoot])
-
+    
     useEffect(() => {
         createStaffContent()
-    }, [staff])
+        employeeSplitUrl()
+    }, [staff.employee])
 
     return (
         <>
             {createPhotoshootContent()}
-            {equipment.map(res => <EquipmentListItem equipment={res} key={res.id} />)}
-            {/* {createStaffContent()} */}
-            {staff.map(res =>
-                <StaffListItem
-                    staff={res}
-                    onClick={() => props.history.push(`${employeeSplitUrl()}`)}
-                />)}
+
+            <div className="photoshoot-details-container">
+                <div className="photoshoot-details-empty-div"><a className="psd-equipment-heading">Equipment</a></div>
+
+                {equipment.map(res => <EquipmentListItem equipment={res} key={res.id} />)}
+
+            </div>
+
+            <div className="photoshoot-details-container">
+                <div className="photoshoot-details-empty-div"><a className="psd-equipment-heading">Staff</a></div>
+
+                {staff.map(res =>
+                    <StaffListItem
+                        staff={res}
+                        employeeUrl={employeeSplitUrl()}
+                        onClick={() => props.history.push(`${employeeSplitUrl()}`)}
+                        {...props}
+                        key={res.id}
+                    />)}
+
+            </div>
         </>
     )
 }

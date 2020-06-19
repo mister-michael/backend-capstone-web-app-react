@@ -66,5 +66,15 @@ export default {
                 "Authorization": `Token ${sessionStorage.getItem("user-token")}`
             }
         }).then(resp => resp.json())
-    }
+    },
+    getByUrl(route) {
+        return fetch(`${route}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem("user-token")}`
+            },
+        })
+            .then(response => response.json())
+    },
 };
