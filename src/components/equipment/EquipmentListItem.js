@@ -3,10 +3,15 @@ import '../photoshoot/Photoshoot.css';
 
 const EquipmentListItem = props => {
 
+    console.log(props.equipment.equipment_id)
+
     return (
         <>
             
-                <div className="photoshoot-details-div">{props.equipment.equipment.name}</div>
+                <div 
+                className="photoshoot-details-div"
+                onClick={() => props.history.push(`/equipments/${props.equipment.equipment_id}`)}
+                >{props.equipment.equipment.name}</div>
         </>
     )
 }

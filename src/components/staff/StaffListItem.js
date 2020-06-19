@@ -18,7 +18,7 @@ const StaffListItem = props => {
                 onClick={() => props.history.push(`/employees/${props.staff.employee_id}`)}
                 className="photoshoot-details-div"
                 employee={employee}
-                employeeId={props.staff.employee_id}
+                employeeid={props.staff.employee_id}
                 >{employee.user.first_name} {employee.user.last_name}</div>
             )
         }

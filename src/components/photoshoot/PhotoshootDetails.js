@@ -103,7 +103,7 @@ const PhotoshootDetails = props => {
             <div className="photoshoot-details-container">
                 <div className="photoshoot-details-empty-div"><a className="psd-equipment-heading">Equipment</a></div>
 
-                {equipment.map(res => <EquipmentListItem equipment={res} key={res.id} />)}
+                {equipment.map(res => <EquipmentListItem equipment={res} key={res.id} {...props} />)}
 
             </div>
 
