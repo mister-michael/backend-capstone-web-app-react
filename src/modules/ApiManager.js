@@ -50,5 +50,13 @@ export default {
                 "Authorization": `Token ${sessionStorage.getItem("user-token")}`
             }
         })
+    },
+    queryPhotoshootEquipment(photoshoot_id) {
+        return fetch(`${apiUrl}/photoshootequipments?photoshoot_id=${photoshoot_id}`, {
+            "method": "GET",
+            "headers": {
+                "Authorization": `Token ${sessionStorage.getItem("user-token")}`
+            }
+        }).then(resp => resp.json())
     }
 };

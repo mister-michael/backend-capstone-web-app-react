@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ApiManager from '../../modules/ApiManager';
+import EquipmentDetails from '../equipment/EquipmentDetails';
 import './Photoshoot.css'
 
 const PhotoshootDetails = props => {
 
     const [photoshoot, setPhotoshoot] = useState(null)
+    const [equipment, setEquipment] = useState([])
 
-    let indoorText = ""
-    // photoshoot.indoor : indoorText = "Indoor" d
+
     async function fetchPhotoshoot() {
         await ApiManager.getOne("photoshoots", props.photoshootId)
             .then(res => {
@@ -16,13 +17,21 @@ const PhotoshootDetails = props => {
             })
     };
 
+    async function fetchEquipment() {
+        await ApiManager.queryPhotoshootEquipment(props.photoshootId)
+            .then(res => {
+                console.log(res)
+                setEquipment(res)
+            })
+    }
+
     function clientDetailsUrl() {
         if (photoshoot) {
             const url = photoshoot.client.url.split("http://localhost:8000");
             return url[1]
         }
     }
-    function createContent() {
+    function createPhotoshootContent() {
         if (photoshoot) {
             return (
                 <div className="photoshoot-details-container">
@@ -44,15 +53,17 @@ const PhotoshootDetails = props => {
 
     useEffect(() => {
         fetchPhotoshoot()
+        fetchEquipment()
     }, [])
 
     useEffect(() => {
-        createContent()
+        createPhotoshootContent()
     }, [photoshoot])
 
     return (
         <>
-            {createContent()}
+            {createPhotoshootContent()}
+            {equipment.map(res => <EquipmentDetails equipment={res} key={res.id} />)}
         </>
     )
 }
