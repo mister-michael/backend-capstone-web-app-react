@@ -1,0 +1,15 @@
+.ps-list-item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.ps-list-item {
+    margin-right: 20px;
+}
+
+.photoshoot-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}

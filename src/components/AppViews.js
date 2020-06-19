@@ -4,6 +4,8 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import AuthMethods from './auth/AuthMethods';
 import Photoshoot from './photoshoot/Photoshoot';
+import PhotoshootDetails from './photoshoot/PhotoshootDetails';
+
 
 const AppViews = props => {
 
@@ -26,9 +28,20 @@ const AppViews = props => {
             />
             <Route
             exact
-            path="/"
+            path="/photoshoots"
             render={props => {
                 if (isAuthenticated()) {return <Photoshoot {...props} />}
+            }}
+            />
+            <Route
+            exact
+            path="/photoshoots/:photoshootId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {
+                    return <PhotoshootDetails 
+                    photoshootId={parseInt(props.match.params.photoshootId)} 
+                    {...props} />
+                }
             }}
             />
         </React.Fragment>

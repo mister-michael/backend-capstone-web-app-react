@@ -18,7 +18,7 @@ const Nav = props => {
             <div className="nav-container">
 
                 <div className="link-container">
-                    <Link id="nav-ps" className="nav-link" to="/">{NavIcons.photoshootIcon()}</Link>
+                    <Link id="nav-ps" className="nav-link" to="/photoshoots">{NavIcons.photoshootIcon()}</Link>
                 </div>
 
                 <div className="link-container">
