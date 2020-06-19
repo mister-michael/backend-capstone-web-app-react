@@ -6,14 +6,14 @@ const EquipmentDetails = props => {
     const [equipment, setEquipment] = useState({})
 
     async function fetchEquipment () {
-        ApiManager.getOne("equipments", props.equipmentId)
+        await ApiManager.getOne("equipments", props.equipmentId)
         .then(res => setEquipment(res))
     }
 
     useEffect(() => {
         fetchEquipment()
-    }, [equipment])
-    
+    }, [])
+
     return ( 
         <div>EQ EquipmentDetails</div>
     )
