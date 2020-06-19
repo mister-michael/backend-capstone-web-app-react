@@ -38,7 +38,7 @@
 
 .photoshoot-details-div {
     
-    max-width: 300px;
+    width: 90%;
     min-width: 100px;
     max-height: 180%;
     padding: 15px 10px 15px 10px;
