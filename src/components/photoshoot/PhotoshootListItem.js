@@ -1,5 +1,5 @@
 import React from 'react';
-import './Photoshoot.css'
+import './Photoshoot.css';
 
 const PhotoshootListItem = props => {
 
