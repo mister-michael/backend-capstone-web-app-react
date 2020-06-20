@@ -10,14 +10,18 @@ const PhotoshootListItem = props => {
 
     return (
         <>
-            <div 
-            className="ps-list-item-container"
-            onClick={() => props.history.push(`/photoshoots/${props.pshoot.id}`)}
-            >
-                <div className="ps-list-item">{dateFunction()}</div>
-                <div className="ps-list-item">{props.pshoot.name}</div>
-                <div className="ps-list-item">{props.pshoot.location}</div>
-            </div>
+            <section className="photoshoot-details-empty-div">
+                <div
+                    className="photoshoot-details-container"
+                    onClick={() => props.history.push(`/photoshoots/${props.pshoot.id}`)}
+                >
+                    <div className="photoshoot-details-empty-div photoshoots-title"><a className="red"></a>{props.pshoot.name}</div>
+                    <div className="photoshoot-details-div">
+                        <div className="">{dateFunction()}</div>
+                        <div className="ps-list-item">{props.pshoot.location}</div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }

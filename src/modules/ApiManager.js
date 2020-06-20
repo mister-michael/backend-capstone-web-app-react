@@ -67,6 +67,14 @@ export default {
             }
         }).then(resp => resp.json())
     },
+    query(route, query, queryValue) {
+        return fetch(`${apiUrl}/${route}?${query}=${queryValue}`, {
+            "method": "GET",
+            "headers": {
+                "Authorization": `Token ${sessionStorage.getItem("user-token")}`
+            }
+        }).then(resp => resp.json())
+    },
     getByUrl(route) {
         return fetch(`${route}`, {
             method: "GET",

@@ -1,17 +1,10 @@
-.ps-list-item-container {
-    display: flex;
-    flex-direction: row;
-}
 
-.ps-list-item {
-    margin-right: 20px;
-}
 
 .photoshoot-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0px;
+    padding: 0 5%;
     
 }
 
@@ -113,3 +106,40 @@
 }
 
 
+
+
+
+
+
+
+
+.ps-list-item-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ps-list-item {
+    margin-right: 20px;
+}
+.home-page-extras {
+    color: red
+}
+
+.red {
+    color: rgba(194, 187, 187, 0.719);
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(74, 72, 72, 0.418);
+}
+
+.photoshoots-title {
+    font-size: 1.2em;
+    /* color: rgb(219, 27, 27); */
+    color: rgba(145, 135, 135, 0.865);
+    /* text-shadow: rgb(36, 35, 35) 1px 2px 3px; */
+}
+.photoshoots-name {
+    font-size: 3em;
+    /* color: rgb(219, 27, 27); */
+    color: rgba(245, 233, 233, 0.865);
+    text-shadow: rgb(36, 35, 35) 1px 2px 3px;
+}

@@ -41,7 +41,7 @@ const PhotoshootDetails = props => {
             return (
                 <div className="photoshoot-details-container">
                     <div className="photoshoot-details-empty-div"><a className="psd-heading">{photoshoot.name}</a></div>
-                    <div className="photoshoot-details-div">{photoshoot.name}</div>
+                    {/* <div className="photoshoot-details-div">{photoshoot.name}</div> */}
                     <div className="photoshoot-details-div">{photoshoot.date_scheduled}</div>
                     <div className="photoshoot-details-div">{photoshoot.location}</div>
                     <div className="photoshoot-details-div">

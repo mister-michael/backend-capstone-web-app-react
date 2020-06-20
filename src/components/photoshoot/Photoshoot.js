@@ -17,14 +17,15 @@ const Photoshoot = props => {
 
     return (
         <>
-            <container className="photoshoot-container">
-                <h2>Photoshoots</h2>
+            <section className="photoshoot-container">
+                <h2 className="photoshoots-name">Photoshoots</h2>
                 {photoshoots.map(res =>
                     <PhotoshootListItem
                     {...props}
                         pshoot={res}
+                        key={res.id}
                     />)}
-            </container>
+            </section>
         </>
     )
 };
