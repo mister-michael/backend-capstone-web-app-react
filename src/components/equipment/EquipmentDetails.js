@@ -53,6 +53,7 @@ const EquipmentDetails = props => {
                             <div>Rental House:</div>
                             <div>{equipment.rental_house.name}</div>
                             <div>{equipment.rental_house.city}</div>
+                            <div>Return By: {equipment.return_date}</div>
                         </>
                         : null}
 
