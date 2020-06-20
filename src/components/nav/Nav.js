@@ -30,7 +30,7 @@ const Nav = props => {
                 </div>
 
                 <div className="link-container">
-        <Link id="nav-st" className="nav-link" to="/staff">{NavIcons.staffIcon()}</Link>
+        <Link id="nav-st" className="nav-link" to="/employees">{NavIcons.staffIcon()}</Link>
                 </div>
 
                 <div className="link-container">

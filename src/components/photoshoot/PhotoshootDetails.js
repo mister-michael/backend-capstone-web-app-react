@@ -41,16 +41,15 @@ const PhotoshootDetails = props => {
             return (
                 <div className="photoshoot-details-container">
                     <div className="photoshoot-details-empty-div"><a className="psd-heading">{photoshoot.name}</a></div>
-                    {/* <div className="photoshoot-details-div">{photoshoot.name}</div> */}
+                    <div
+                        className="photoshoot-details-div"
+                        onClick={() => props.history.push(`${clientDetailsUrl()}`)}>
+                        {photoshoot.client.first_name} {photoshoot.client.last_name}</div>
                     <div className="photoshoot-details-div">{photoshoot.date_scheduled}</div>
                     <div className="photoshoot-details-div">{photoshoot.location}</div>
                     <div className="photoshoot-details-div">
                         {photoshoot.indoor ? "Indoor" : "Outdoor"}</div>
                     <div className="photoshoot-details-div">${photoshoot.charge}</div>
-                    <div
-                        className="photoshoot-details-div"
-                        onClick={() => props.history.push(`${clientDetailsUrl()}`)}>
-                        {photoshoot.client.first_name} {photoshoot.client.last_name} {photoshoot.client.id}</div>
                 </div>
             )
         }
@@ -105,11 +104,12 @@ const PhotoshootDetails = props => {
 
                 {equipment.map(res =>
                     <EquipmentListItem
+                        from={"photoshoot-details"}
                         equipment={res}
                         key={res.id}
-                        {...props} 
+                        {...props}
                         from={"photoshoot-details"}
-                        />)}
+                    />)}
 
             </div>
 
@@ -118,6 +118,7 @@ const PhotoshootDetails = props => {
 
                 {staff.map(res =>
                     <StaffListItem
+                        from={"photoshoot-details"}
                         staff={res}
                         employeeUrl={employeeSplitUrl()}
                         onClick={() => props.history.push(`${employeeSplitUrl()}`)}
