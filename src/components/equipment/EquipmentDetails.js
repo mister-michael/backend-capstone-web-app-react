@@ -23,8 +23,12 @@ const EquipmentDetails = props => {
                 if (res.photoshoot.deleted === null) {
                     return (
                         <>
-                            <div>Photoshoots:</div>
-                            <div>{res.photoshoot.name}</div>
+                            <section
+                            onClick={() => props.history.push(`/photoshoots/${res.photoshoot_id}`)}
+                            >
+                                <div>Photoshoots:</div>
+                                <div>{res.photoshoot.name}</div>
+                            </section>
                         </>
                     )
                 }
