@@ -6,7 +6,8 @@ import AuthMethods from './auth/AuthMethods';
 import Photoshoot from './photoshoot/Photoshoot';
 import PhotoshootDetails from './photoshoot/PhotoshootDetails';
 import StaffDetails from './staff/StaffDetails';
-import EquipmentDetails from './equipment/EquipmentDetails'
+import EquipmentDetails from './equipment/EquipmentDetails';
+import ClientDetails from './client/ClientDetails';
 
 
 const AppViews = props => {
@@ -64,6 +65,17 @@ const AppViews = props => {
                 if (isAuthenticated()) {
                     return <EquipmentDetails 
                     equipmentId={parseInt(props.match.params.equipmentId)} 
+                    {...props} />
+                }
+            }}
+            />
+            <Route
+            exact
+            path="/clients/:clientId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {
+                    return <ClientDetails 
+                    clientId={parseInt(props.match.params.clientId)} 
                     {...props} />
                 }
             }}
