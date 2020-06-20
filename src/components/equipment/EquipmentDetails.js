@@ -22,7 +22,10 @@ const EquipmentDetails = props => {
             photoshoots.map(res => {
                 if (res.photoshoot.deleted === null) {
                     return (
-                        <div>{res.photoshoot.name}</div>
+                        <>
+                            <div>Photoshoots:</div>
+                            <div>{res.photoshoot.name}</div>
+                        </>
                     )
                 }
             }
@@ -39,7 +42,7 @@ const EquipmentDetails = props => {
         <>
             {equipment.equipment_type ?
                 <>
-                    <div>{equipment.name}</div>
+                    <div>Equipment: {equipment.name}</div>
                     <div>Weight: {equipment.weight}.0 lbs</div>
                     <div>Category: {equipment.equipment_type.name}</div>
 
@@ -47,6 +50,7 @@ const EquipmentDetails = props => {
 
                     {equipment.rental_house !== null ?
                         <>
+                            <div>Rental House:</div>
                             <div>{equipment.rental_house.name}</div>
                             <div>{equipment.rental_house.city}</div>
                         </>
