@@ -9,11 +9,11 @@ import StaffDetails from './staff/StaffDetails';
 import EquipmentDetails from './equipment/EquipmentDetails';
 import ClientDetails from './client/ClientDetails';
 import Clients from './client/Clients';
+import Equipment from './equipment/Equipment';
 
 
 const AppViews = props => {
 
-    // const [isAuthenticated, setIsAuthenticated] = useState(false)
     const {isAuthenticated} = AuthMethods()
 
     return (
@@ -57,6 +57,13 @@ const AppViews = props => {
                     employeeId={parseInt(props.match.params.employeeId)} 
                     {...props} />
                 }
+            }}
+            />
+            <Route
+            exact
+            path="/equipment"
+            render={props => {
+                if (isAuthenticated()) {return <Equipment {...props} />}
             }}
             />
             <Route

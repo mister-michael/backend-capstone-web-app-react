@@ -86,11 +86,11 @@ const PhotoshootDetails = props => {
         fetchPhotoshootEquipment()
         fetchPhotoShootStaff()
     }, [])
-    
+
     useEffect(() => {
         createPhotoshootContent()
     }, [photoshoot])
-    
+
     useEffect(() => {
         createStaffContent()
         employeeSplitUrl()
@@ -103,7 +103,13 @@ const PhotoshootDetails = props => {
             <div className="photoshoot-details-container">
                 <div className="photoshoot-details-empty-div"><a className="psd-equipment-heading">Equipment</a></div>
 
-                {equipment.map(res => <EquipmentListItem equipment={res} key={res.id} {...props} />)}
+                {equipment.map(res =>
+                    <EquipmentListItem
+                        equipment={res}
+                        key={res.id}
+                        {...props} 
+                        from={"photoshoot-details"}
+                        />)}
 
             </div>
 
