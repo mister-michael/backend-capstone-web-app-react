@@ -6,7 +6,7 @@ const ClientDetails = props => {
     const [client, setClient] = useState({})
 
     async function fetchClient() {
-        ApiManager.getOne("clients", props.clientId)
+        await ApiManager.getOne("clients", props.clientId)
             .then(res => setClient(res))
     };
 

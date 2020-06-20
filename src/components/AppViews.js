@@ -8,6 +8,7 @@ import PhotoshootDetails from './photoshoot/PhotoshootDetails';
 import StaffDetails from './staff/StaffDetails';
 import EquipmentDetails from './equipment/EquipmentDetails';
 import ClientDetails from './client/ClientDetails';
+import Clients from './client/Clients';
 
 
 const AppViews = props => {
@@ -67,6 +68,13 @@ const AppViews = props => {
                     equipmentId={parseInt(props.match.params.equipmentId)} 
                     {...props} />
                 }
+            }}
+            />
+            <Route
+            exact
+            path="/clients"
+            render={props => {
+                if (isAuthenticated()) {return <Clients {...props} />}
             }}
             />
             <Route
