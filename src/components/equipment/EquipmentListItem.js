@@ -1,11 +1,12 @@
 import React from 'react';
 import '../photoshoot/Photoshoot.css';
+import ApiManager from '../../modules/ApiManager';
 
 const EquipmentListItem = props => {
 
     const from = props.from
 
-    console.log(props.equipment.equipment_id)
+  
 
     const createContent = () => {
         if (from === "photoshoot-details") {

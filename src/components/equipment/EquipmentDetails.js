@@ -5,14 +5,34 @@ import './Equipment.css'
 const EquipmentDetails = props => {
 
     const [equipment, setEquipment] = useState({})
+    const [photoshoots, setPhotoshoots] = useState([])
 
     async function fetchEquipment() {
         await ApiManager.getOne("equipments", props.equipmentId)
             .then(res => setEquipment(res))
     }
 
+    async function fetchPhotoshootEquipment() {
+        await ApiManager.query("photoshootequipments", "equipment_id", props.equipmentId)
+            .then(res => setPhotoshoots(res))
+    };
+
+    const createPhotoshootContent = () => {
+        return (
+            photoshoots.map(res => {
+                if (res.photoshoot.deleted === null) {
+                    return (
+                        <div>{res.photoshoot.name}</div>
+                    )
+                }
+            }
+            )
+        )
+    }
+
     useEffect(() => {
-        fetchEquipment()
+        fetchEquipment();
+        fetchPhotoshootEquipment();
     }, [])
 
     return (
@@ -36,7 +56,7 @@ const EquipmentDetails = props => {
 
                 : null}
 
-            {/* battery_count wireless return_date rental_house */}
+            {createPhotoshootContent()}
 
         </>
     )
