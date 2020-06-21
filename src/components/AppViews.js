@@ -11,6 +11,7 @@ import ClientDetails from './client/ClientDetails';
 import Clients from './client/Clients';
 import Equipment from './equipment/Equipment';
 import Staff from './staff/Staff';
+import RentalHouseDetails from './rental/RentalHouseDetails';
 
 
 const AppViews = props => {
@@ -99,6 +100,24 @@ const AppViews = props => {
                 if (isAuthenticated()) {
                     return <ClientDetails 
                     clientId={parseInt(props.match.params.clientId)} 
+                    {...props} />
+                }
+            }}
+            />
+            <Route
+            exact
+            path="/clients"
+            render={props => {
+                if (isAuthenticated()) {return <Clients {...props} />}
+            }}
+            />
+            <Route
+            exact
+            path="/rentals/:rentalId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {
+                    return <RentalHouseDetails 
+                    rentalId={parseInt(props.match.params.rentalId)} 
                     {...props} />
                 }
             }}

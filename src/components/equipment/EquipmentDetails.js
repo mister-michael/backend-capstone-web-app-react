@@ -24,7 +24,7 @@ const EquipmentDetails = props => {
                     return (
                         <>
                             <section
-                            onClick={() => props.history.push(`/photoshoots/${res.photoshoot_id}`)}
+                                onClick={() => props.history.push(`/photoshoots/${res.photoshoot_id}`)}
                             >
                                 <div>Photoshoots:</div>
                                 <div>{res.photoshoot.name}</div>
@@ -54,10 +54,12 @@ const EquipmentDetails = props => {
 
                     {equipment.rental_house !== null ?
                         <>
-                            <div>Rental House:</div>
-                            <div>{equipment.rental_house.name}</div>
-                            <div>{equipment.rental_house.city}</div>
-                            <div>Return By: {equipment.return_date}</div>
+                            <section onClick={() => props.history.push(`/rentals/${equipment.rental_house_id}`)}>
+                                <div>Rental House:</div>
+                                <div>{equipment.rental_house.name}</div>
+                                <div>{equipment.rental_house.city}</div>
+                                <div>Return By: {equipment.return_date}</div>
+                            </section>
                         </>
                         : null}
 
