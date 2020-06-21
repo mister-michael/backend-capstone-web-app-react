@@ -88,12 +88,12 @@ const PhotoshootDetails = props => {
 
     useEffect(() => {
         createPhotoshootContent()
-    }, [photoshoot])
+    }, [])
 
     useEffect(() => {
         createStaffContent()
         employeeSplitUrl()
-    }, [staff.employee])
+    }, [])
 
     return (
         <>

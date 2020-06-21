@@ -13,7 +13,7 @@ const Equipment = props => {
 
     useEffect(()=>{
         fetchEquipment();
-    },[equipmentList])
+    },[])
 
     return (
         <>
