@@ -8,6 +8,7 @@ const StaffListItem = props => {
 
     let from = props.from
 
+
     async function fetchEmployee() {
         await ApiManager.getOne("employees", props.staff.employee_id)
             .then(res => setEmployee(res))
@@ -28,7 +29,7 @@ const StaffListItem = props => {
         } else if (from === "employees-page") {
             return (
                 <div
-                onClick={() => props.history.push(`/employees/${props.staff.employee_id}`)}
+                onClick={() => props.history.push(`/employees/${props.staff.id}`)}
                 className="photoshoot-details-div"
                 employeeid={props.staff.employee_id}
             >{props.staff.user.first_name} {props.staff.user.last_name}</div>
