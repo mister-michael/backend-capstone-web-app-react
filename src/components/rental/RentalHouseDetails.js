@@ -12,7 +12,7 @@ const RentalHouseDetails = props => {
 
     useEffect(() => {
         fetchRentalHouse();
-    }, [rentalHouse.name])
+    }, [])
 
     return (
         <>

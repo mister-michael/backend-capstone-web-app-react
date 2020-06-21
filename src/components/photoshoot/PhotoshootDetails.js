@@ -9,13 +9,10 @@ const PhotoshootDetails = props => {
     const [photoshoot, setPhotoshoot] = useState(null)
     const [equipment, setEquipment] = useState([])
     const [staff, setStaff] = useState([])
-    const [employeeUrlState, setEmployeeUrlState] = useState("")
-
 
     async function fetchPhotoshoot() {
         await ApiManager.getOne("photoshoots", props.photoshootId)
             .then(res => {
-                console.log(res)
                 setPhotoshoot(res)
             })
     };
@@ -23,7 +20,6 @@ const PhotoshootDetails = props => {
     async function fetchPhotoshootEquipment() {
         await ApiManager.queryPhotoshootEquipment(props.photoshootId)
             .then(res => {
-                console.log(res)
                 setEquipment(res)
             })
     };
@@ -31,7 +27,6 @@ const PhotoshootDetails = props => {
     async function fetchPhotoShootStaff() {
         await ApiManager.queryPhotoshootStaff(props.photoshootId)
             .then(res => {
-                console.log(res)
                 setStaff(res)
             });
     }
@@ -63,13 +58,10 @@ const PhotoshootDetails = props => {
     }
 
 
-
-
     function employeeSplitUrl() {
         if (staff.employee) {
             const splitEmployeeUrl = staff.employee.url.split("http://localhost:8000")
             console.log(splitEmployeeUrl[1])
-            setEmployeeUrlState(splitEmployeeUrl)
             return splitEmployeeUrl[1]
         }
     }

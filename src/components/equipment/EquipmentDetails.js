@@ -18,22 +18,20 @@ const EquipmentDetails = props => {
     };
 
     const createPhotoshootContent = () => {
-        return (
-            photoshoots.map(res => {
-                if (res.photoshoot.deleted === null) {
-                    return (
-                        <>
-                            <section
-                                onClick={() => props.history.push(`/photoshoots/${res.photoshoot_id}`)}
-                            >
-                                <div>Photoshoots:</div>
-                                <div>{res.photoshoot.name}</div>
-                            </section>
-                        </>
-                    )
-                }
+        photoshoots.map(res => {
+            if (res.photoshoot.deleted === null) {
+                return (
+                    <>
+                        <section
+                            onClick={() => props.history.push(`/photoshoots/${res.photoshoot_id}`)}
+                        >
+                            <div>Photoshoots:</div>
+                            <div>{res.photoshoot.name}</div>
+                        </section>
+                    </>
+                )
             }
-            )
+        }
         )
     }
 

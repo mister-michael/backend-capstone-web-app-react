@@ -20,8 +20,13 @@
 
 .photoshoot-details-container {
     display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
     /* margin: 10px 10px 10px 10px; */
     
     

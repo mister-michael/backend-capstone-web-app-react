@@ -12,7 +12,7 @@ const ClientDetails = props => {
 
     useEffect(() => {
         fetchClient()
-    }, [client])
+    }, [])
 
     return (
         <>

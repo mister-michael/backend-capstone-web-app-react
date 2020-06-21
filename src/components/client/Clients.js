@@ -8,7 +8,9 @@ const Clients = props => {
 
     async function fetchClients () {
         await ApiManager.getAll("clients")
-        .then(res => setClients(res));
+        .then(res => {
+            console.log(res, "response once")
+            setClients(res)});
     };
 
     useEffect(()=> {

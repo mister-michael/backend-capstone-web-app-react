@@ -89,6 +89,7 @@ const AppViews = props => {
             render={props => {
                 if (isAuthenticated()) {
                     return <EquipmentDetails 
+                    key={props.match.params.equipmentId}
                     equipmentId={parseInt(props.match.params.equipmentId)} 
                     {...props} />
                 }
@@ -112,13 +113,13 @@ const AppViews = props => {
                 }
             }}
             />
-            <Route
+            {/* <Route
             exact
             path="/clients"
             render={props => {
                 if (isAuthenticated()) {return <Clients {...props} />}
             }}
-            />
+            /> */}
             <Route
             exact
             path="/rentals/:rentalId(\d+)"
