@@ -18,10 +18,17 @@ const Photoshoot = props => {
     return (
         <>
             <section className="photoshoot-container">
-                <h2 className="photoshoots-name">Photoshoots</h2>
+                
+                <section
+                onClick={()=> props.history.push(`/photoshoot/form`)}
+                >
+                    <h2 className="photoshoots-name">Photoshoots</h2>
+                    <button>Create Photoshoot</button>
+                </section>
+
                 {photoshoots.map(res =>
                     <PhotoshootListItem
-                    {...props}
+                        {...props}
                         pshoot={res}
                         key={res.id}
                     />)}

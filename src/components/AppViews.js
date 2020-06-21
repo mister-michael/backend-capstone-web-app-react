@@ -12,6 +12,7 @@ import Clients from './client/Clients';
 import Equipment from './equipment/Equipment';
 import Staff from './staff/Staff';
 import RentalHouseDetails from './rental/RentalHouseDetails';
+import PhotoshootForm from './photoshoot/PhotoshootForm';
 
 
 const AppViews = props => {
@@ -48,6 +49,13 @@ const AppViews = props => {
                     photoshootId={parseInt(props.match.params.photoshootId)} 
                     {...props} />
                 }
+            }}
+            />
+            <Route
+            exact
+            path="/photoshoot/form"
+            render={props => {
+                if (isAuthenticated()) {return <PhotoshootForm {...props} />}
             }}
             />
              <Route
