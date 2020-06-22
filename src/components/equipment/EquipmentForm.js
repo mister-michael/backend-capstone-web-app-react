@@ -10,7 +10,7 @@ const EquipmentForm = props => {
         equipment_type_id: "", return_date: null, rental_house_id: null
     });
 
-    const [equipmentTypes, setEquipmentTypes] = useState(null);
+    const [equipmentTypes, setEquipmentTypes] = useState([]);
     const [wirelessCheckbox, setWirelessCheckbox] = useState(false);
     const [rentalHouses, setRentalHouses] = useState(null);
 
@@ -29,7 +29,7 @@ const EquipmentForm = props => {
     const handleOptionSelect = (evt) => {
         const stateToChange = { ...equipmentTypes }
         stateToChange[evt.target.id] = parseInt(evt.target.value)
-        setEquipmentTypes(stateToChange)
+        setNewEquipment(stateToChange)
     };
 
     const handleCheckBox = () => {
@@ -48,7 +48,7 @@ const EquipmentForm = props => {
             return rentalHouses.map(res =>
                 <RentalHouseListOptions rentalHouse={res} key={res.id} />)
         }
-    }
+    };
 
 
 

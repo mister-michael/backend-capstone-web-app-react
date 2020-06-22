@@ -70,6 +70,10 @@ const PhotoshootDetails = props => {
         if (staff.employee) {
             return staff.map(res => <div>{res.id}</div>)
         }
+    };
+
+    const addEquipmentForm = () => {
+
     }
 
     useEffect(() => {
@@ -92,7 +96,10 @@ const PhotoshootDetails = props => {
             {createPhotoshootContent()}
 
             <div className="photoshoot-details-container">
-                <div className="photoshoot-details-empty-div"><a className="psd-equipment-heading">Equipment</a></div>
+                <div className="photoshoot-details-empty-div">
+                    <a className="psd-equipment-heading">Equipment</a>
+                    <button onClick={() => props.history.push(`equipment/${photoshoot.id}`)}>Add Equipment</button>
+                </div>
 
                 {equipment.map(res =>
                     <EquipmentListItem
