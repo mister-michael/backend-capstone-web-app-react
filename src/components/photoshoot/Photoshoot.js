@@ -18,13 +18,11 @@ const Photoshoot = props => {
     return (
         <>
             <section className="photoshoot-container">
-                
-                <section
-                onClick={()=> props.history.push(`/photoshoot/form`)}
-                >
+
+                <div className="photoshoots-header">
                     <h2 className="photoshoots-name">Photoshoots</h2>
-                    <button>Create Photoshoot</button>
-                </section>
+                    <button className="create-button" onClick={() => props.history.push(`/photoshoot/form`)}>+</button>
+                </div>
 
                 {photoshoots.map(res =>
                     <PhotoshootListItem

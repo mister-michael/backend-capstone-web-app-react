@@ -4,7 +4,7 @@ import ClientListOption from '../client/ClientListOption';
 
 const PhotoshootForm = props => {
 
-    const [newPhotoshoot, setNewPhotoshoot] = useState({})
+    const [newPhotoshoot, setNewPhotoshoot] = useState({ name: "", location: "", date_scheduled: "", charge: "", client_id: null, indoor: null, paid: 1 })
     const [clients, setClients] = useState(null)
 
     const handleFieldChange = (evt) => {
@@ -14,8 +14,8 @@ const PhotoshootForm = props => {
     };
 
     const handleClientSelect = (evt) => {
-        const stateToChange = { ...newPhotoshoot }
-        stateToChange.client_id = parseInt(evt.target.defaultValue);
+        const stateToChange = {...newPhotoshoot}
+        stateToChange[evt.target.id] = parseInt(evt.target.value)
         setNewPhotoshoot(stateToChange)
     }
 
@@ -25,8 +25,7 @@ const PhotoshootForm = props => {
     };
 
     const createClientOptionList = () => {
-        if (clients) {
-            console.log(clients)
+        if (clients !== null) {
             return clients.map(res => <ClientListOption
                 client={res}
                 value={res.id}
@@ -37,8 +36,21 @@ const PhotoshootForm = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (newPhotoshoot.name === "") {
-            window.alert("photoshoot requires a name")
+
+        if (
+            newPhotoshoot.name === "" ||
+            newPhotoshoot.location === "" ||
+            newPhotoshoot.date_scheduled === "" ||
+            // newPhotoshoot.client_id === 0 ||
+            // newPhotoshoot.indoor === null ||
+            newPhotoshoot.charge === "" 
+        ) {
+            window.alert("please fill out all fields")
+        } else {
+            newPhotoshoot.client_id = parseInt(newPhotoshoot.client_id)
+            newPhotoshoot.indoor = parseInt(newPhotoshoot.indoor)
+            ApiManager.create("photoshoots", newPhotoshoot)
+            .then(() => props.history.push('/photoshoots'))
         }
     }
 
@@ -91,13 +103,13 @@ const PhotoshootForm = props => {
                 </select>
             </fieldset>
 
-            <select id="indoor">
-                <option defaultValue="null">select</option>
-                <option defaultValue="1">Indoor</option>
-                <option defaultValue="0">Outdoor</option>
+            <select id="indoor" onChange={handleFieldChange}>
+                <option >select</option>
+                <option value="1">Indoor</option>
+                <option value="0">Outdoor</option>
             </select>
 
-            <button type="submit"  onClick={handleSubmit} />
+            <button type="submit" onClick={handleSubmit}>submit</button>
         </>
     )
 };

@@ -17,6 +17,12 @@
 
 
 
+.create-button {
+    max-width: 30px;
+    max-height: 30px;
+    align-self: center;
+}
+
 
 .photoshoot-details-container {
     display: flex;

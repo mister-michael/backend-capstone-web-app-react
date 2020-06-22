@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { Route } from "react-router-dom";
 import Login from './auth/Login';
 import Register from './auth/Register';
 import AuthMethods from './auth/AuthMethods';
