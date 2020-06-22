@@ -6,8 +6,8 @@ import RentalHouseListOptions from '../rental/RentalHouseListOptions';
 const EquipmentForm = props => {
 
     const [newEquipment, setNewEquipment] = useState({
-        name: "", weight: "", battery_count: "", battery_type_id: "", wireless: "",
-        equipment_type_id: "", return_date: null, rental_house_id: null
+        name: "", weight: null, battery_count: null, battery_type_id: null, wireless: false,
+        equipment_type_id: null, return_date: null, rental_house_id: null
     });
 
     const [equipmentTypes, setEquipmentTypes] = useState([]);
@@ -27,7 +27,7 @@ const EquipmentForm = props => {
     };
 
     const handleOptionSelect = (evt) => {
-        const stateToChange = { ...equipmentTypes }
+        const stateToChange = { ...newEquipment }
         stateToChange[evt.target.id] = parseInt(evt.target.value)
         setNewEquipment(stateToChange)
     };
@@ -50,8 +50,6 @@ const EquipmentForm = props => {
         }
     };
 
-
-
     async function fetchEquipmentTypes() {
         await ApiManager.getAll("equipmenttypes")
             .then(res => setEquipmentTypes(res))
@@ -62,15 +60,26 @@ const EquipmentForm = props => {
             .then(res => setRentalHouses(res));
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (newEquipment.name === "") {
+            window.alert("please name the equiment")
+        } else {
+            ApiManager.create("equipments", newEquipment)
+            .then(res => props.history.push(`/equipment`))
+        }
+    };
+
     useEffect(() => {
         fetchEquipmentTypes();
         fetchRentalHouses();
     }, []);
-    
+
     useEffect(() => {
         createRentalHouseListOptionsList();
     }, [rentalHouses]);
-    
+
     useEffect(() => {
         createEquipmentTypeOptionsList();
     }, [equipmentTypes]);
@@ -125,7 +134,7 @@ const EquipmentForm = props => {
                 </select>
             </div>
 
-            <button id="submit-button" type="submit">submit</button>
+            <button id="submit-button" type="submit" onClick={handleSubmit}>submit</button>
         </>
     )
 };
