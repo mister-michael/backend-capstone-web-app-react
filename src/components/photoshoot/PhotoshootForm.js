@@ -93,7 +93,7 @@ const PhotoshootForm = props => {
                     id="client_id"
                     onChange={handleClientSelect}
                 >
-                    <option defaultValue="1" className="form-control">Select Client</option>
+                    <option className="form-control">Select Client</option>
                     {createClientOptionList()}
                     {/* {clients ? clients.map(res =>
                         <ClientListOption

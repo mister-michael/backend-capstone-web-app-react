@@ -13,6 +13,7 @@ import Equipment from './equipment/Equipment';
 import Staff from './staff/Staff';
 import RentalHouseDetails from './rental/RentalHouseDetails';
 import PhotoshootForm from './photoshoot/PhotoshootForm';
+import EquipmentForm from './equipment/EquipmentForm';
 
 
 const AppViews = props => {
@@ -81,6 +82,13 @@ const AppViews = props => {
             path="/equipment"
             render={props => {
                 if (isAuthenticated()) {return <Equipment {...props} />}
+            }}
+            />
+            <Route
+            exact
+            path="/equipment/form"
+            render={props => {
+                if (isAuthenticated()) {return <EquipmentForm {...props} />}
             }}
             />
             <Route
