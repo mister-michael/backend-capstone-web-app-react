@@ -34,25 +34,53 @@ const AddEquipmentForm = props => {
             })
     };
 
-    // const createEquipmentContent = () => {
-    //     if (photoshootEqiupment) {
-    //         photoshootEqiupment.map(res => {
-    //             if (res)
-    //         })
-    //     }
-    // }
-
     const handleEquipmentTypeSelect = (evt) => {
         fetchEquipment(parseInt(evt.target.value));
         toggleAddbutton();
     };
 
-    const selectEquipment = (evt) => {
-        const stateToChange = {...equipmentToAdd};
-        console.log(evt.target.value);
-        stateToChange[evt.target.id] = parseInt(evt.target.id);
-        setEquipmentToAdd(stateToChange);
-        document.getElementById(evt.target.id).classList.toggle('green')
+    //this creates a state array of id's to add, instead of changing stateToChange[taco] i need to just push the id into the array
+    //
+    // const selectEquipment = (evt) => {
+    //     const stateToChange = { ...equipmentToAdd };
+    //     stateToChange[evt.target.id] = parseInt(evt.target.id);
+    //     setEquipmentToAdd(stateToChange);
+    //     document.getElementById(evt.target.id).classList.toggle('green')
+    // };
+
+    //want to figure this out for multiple add functionality
+    //
+    // const submitAddedEquipment = () => {
+    //     if (equipmentToAdd) {
+    //         for (let i = 0; i < equipmentToAdd.length; i++) {
+
+    //             const photoshootEquipmentObject = {
+    //                 photoshoot_id: photoshootId,
+    //                 equipment_id: equipmentToAdd[i]
+    //             };
+
+    //             console.log(photoshootEquipmentObject);
+    //             console.log("BUTTON CLICKED");
+
+    //             ApiManager.create("photoshootequipments", photoshootEquipmentObject);
+    //         }
+    //     }
+    // };
+
+    const addEquipment = (evt) => {
+        console.log("clicked")
+        const equipmentObject = {
+            photoshoot_id: photoshootId,
+            equipment_id: evt.target.id
+        }
+        ApiManager.create("photoshootequipments", equipmentObject)
+            .then(setRefresh(!refresh))
+    }
+
+    const deleteEquipment = (evt) => {
+        const pseId = evt.target.id.split("--")[1]
+        ApiManager.delete("photoshootequipments", pseId)
+        .then(() => setRefresh(!refresh))
     }
 
     useEffect(() => {
@@ -60,16 +88,17 @@ const AddEquipmentForm = props => {
         fetchEquipmentTypes();
     }, [])
 
-    // useEffect(() => {
-    //     fetchEquipment();
-    // }, [eqTypeSelectedId])
-
-
     return (
         <>
             <div>EQUIPMENT</div>
             {/* {createEquipmentContent()} */}
-            {photoshootEqiupment ? photoshootEqiupment.map(res => <div key={res.id}>{res.equipment.name}</div>) : null}
+            {photoshootEqiupment ? photoshootEqiupment.map(res =>
+            <>
+                <div id={res.id} key={res.id}>{res.equipment.name}</div>
+                <button id={`button--${res.id}`} onClick={deleteEquipment}>Delete</button>
+                </>
+                )
+                : null}
 
             <div>Add Equipment</div>
             <select
@@ -77,24 +106,26 @@ const AddEquipmentForm = props => {
                 onChange={handleEquipmentTypeSelect}
             >
                 <option className="form-control">Equipment Type</option>
-                {equipmentTypes ? equipmentTypes.map(res => <option value={res.id}>{res.name}</option>) : null}
+                {equipmentTypes ? equipmentTypes.map(res => <option key={res.id} value={res.id}>{res.name}</option>) : null}
             </select>
 
             <div>
                 {availableEquipment ? availableEquipment.map(res =>
 
                     <>
-                        <div 
-                        id={res.id} 
-                        className=""
-                        onClick={selectEquipment}>{res.id}xxx{res.name}</div>
+                        <div
+                            id={res.id}
+                            className=""
+                            onClick={addEquipment}>{res.id}xxx{res.name}</div>
                     </>
-                    ) : null}
+                ) : null}
 
-                <button
+                {/* <button
                     id="add-button"
+                    type="submit"
                     className="hidden"
-                >add</button>
+                    onClick={submitAddedEquipment()}
+                >add</button> */}
             </div>
 
         </>
