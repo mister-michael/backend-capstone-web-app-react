@@ -14,7 +14,7 @@ const Staff = props => {
 
     useEffect(()=>{
         fetchEmployees();
-    },[employees])
+    },[])
 
     return (
         <>

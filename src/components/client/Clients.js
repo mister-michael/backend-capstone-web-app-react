@@ -19,6 +19,10 @@ const Clients = props => {
 
     return (
         <>
+        <button
+        id="add-client-button"
+        onClick={() => props.history.push('client/form')}
+        >Add Client</button>
             {clients.map(res => <ClientListItem client={res} {...props} key={res.id}/>)}
         </>
     )

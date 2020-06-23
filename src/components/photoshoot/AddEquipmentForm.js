@@ -5,7 +5,7 @@ import './Photoshoot.css'
 const AddEquipmentForm = props => {
 
     const [photoshootEqiupment, setPhotoshootEquipment] = useState(null);
-    const [refresh, setRefresh] = useState(true);
+    const [refresh, setRefresh] = useState(false);
     const [equipmentTypes, setEquipmentTypes] = useState(null);
     const [availableEquipment, setAvailableEquipment] = useState(null);
     const [equipmentToAdd, setEquipmentToAdd] = useState(null)
@@ -75,18 +75,23 @@ const AddEquipmentForm = props => {
             equipment_id: evt.target.id
         }
         ApiManager.create("photoshootequipments", equipmentObject)
-            .then(setRefresh(!refresh))
+            .then(setRefresh(true))
     }
 
     const deleteEquipment = (evt) => {
         const pseId = evt.target.id.split("--")[1]
         ApiManager.delete("photoshootequipments", pseId)
-        .then(() => setRefresh(!refresh))
+        .then(() => setRefresh(true))
     }
 
     useEffect(() => {
         fetchPhotoshootEquipment();
         fetchEquipmentTypes();
+        setRefresh(false)
+    }, [refresh])
+
+    useEffect(() => {
+
     }, [])
 
     return (
