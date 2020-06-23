@@ -16,6 +16,10 @@ const ClientDetails = props => {
 
     return (
         <>
+        <div>
+            <button
+            onClick={() => props.history.push(`/client/edit/${client.id}`)}>Edit</button>
+        </div>
             <div>{client.first_name} {client.last_name}</div>
             <div>{client.phone}</div>
             <div>{client.email}</div>

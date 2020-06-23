@@ -18,6 +18,7 @@ import AddEquipmentForm from './photoshoot/AddEquipmentForm';
 import AddStaffToPhotoshootForm from './staff/AddStaffToPhotoshootForm';
 import PhotoshootEditForm from './photoshoot/PhotoshootEditForm';
 import ClientForm from './client/ClientForm';
+import ClientEditForm from './client/ClientEditForm';
 
 
 const AppViews = props => {
@@ -84,7 +85,7 @@ const AppViews = props => {
                 if (isAuthenticated()) {return <AddStaffToPhotoshootForm photoshootId={parseInt(props.match.params.photoshootId)} {...props} />}
             }}
             />
-             <Route
+            <Route
             exact
             path="/employees"
             render={props => {
@@ -151,6 +152,13 @@ const AppViews = props => {
             path="/client/form"
             render={props => {
                 if (isAuthenticated()) {return <ClientForm {...props} />}
+            }}
+            />
+            <Route
+            exact
+            path="/client/edit/:clientId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {return <ClientEditForm clientId={parseInt(props.match.params.clientId)}  {...props} />}
             }}
             />
             {/* <Route
