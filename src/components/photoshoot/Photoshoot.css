@@ -142,6 +142,10 @@
     text-shadow: 1px 1px 0px rgba(74, 72, 72, 0.418);
 }
 
+.green {
+    color: green;
+}
+
 .photoshoots-title {
     font-size: 1.2em;
     /* color: rgb(219, 27, 27); */

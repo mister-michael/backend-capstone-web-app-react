@@ -9,7 +9,7 @@ const EquipmentListItem = props => {
   
 
     const createContent = () => {
-        if (from === "photoshoot-details") {
+        if (from === "photoshoot-details" || from === "add-equipment") {
             return (
                 <div
                     className="photoshoot-details-div"
@@ -17,7 +17,7 @@ const EquipmentListItem = props => {
                 >{props.equipment.equipment.name}</div>
             )
         }
-        else if (from === "equipment-page") {
+        else if (from === "equipment-page" ) {
             return (
                 <div
                     className="photoshoot-details-div"

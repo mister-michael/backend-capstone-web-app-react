@@ -5,7 +5,7 @@ import './Equipment.css'
 const EquipmentDetails = props => {
 
     const [equipment, setEquipment] = useState({})
-    const [photoshoots, setPhotoshoots] = useState([])
+    const [photoshoots, setPhotoshoots] = useState(null)
 
     async function fetchEquipment() {
         await ApiManager.getOne("equipments", props.equipmentId)
@@ -18,27 +18,35 @@ const EquipmentDetails = props => {
     };
 
     const createPhotoshootContent = () => {
-        photoshoots.map(res => {
-            if (res.photoshoot.deleted === null) {
-                return (
-                    <>
-                        <section
-                            onClick={() => props.history.push(`/photoshoots/${res.photoshoot_id}`)}
-                        >
-                            <div>Photoshoots:</div>
-                            <div>{res.photoshoot.name}</div>
-                        </section>
-                    </>
-                )
+        if (photoshoots) {
+            photoshoots.map(res => {
+                if (res.photoshoot.deleted === null) {
+                    return (
+                        <>
+                            <section
+                                onClick={() => props.history.push(`/photoshoots/${res.photoshoot_id}`)}
+                            >
+                                <div>Photoshoots:</div>
+                                <div>{res.photoshoot.name}</div>
+                            </section>
+                        </>
+                    )
+                }
             }
+            )
         }
-        )
     }
 
     useEffect(() => {
         fetchEquipment();
         fetchPhotoshootEquipment();
     }, [])
+
+    useEffect(()=>{
+        createPhotoshootContent();
+    },[photoshoots])
+
+
 
     return (
         <>
