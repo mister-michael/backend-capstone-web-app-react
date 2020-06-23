@@ -113,7 +113,10 @@ const PhotoshootDetails = props => {
             </div>
 
             <div className="photoshoot-details-container">
-                <div className="photoshoot-details-empty-div"><a className="psd-equipment-heading">Staff</a></div>
+                <div className="photoshoot-details-empty-div">
+                    <a className="psd-equipment-heading">Staff</a>
+                    <button onClick={() => props.history.push(`staff/${photoshoot.id}`)}>Add Staff</button>
+                </div>
 
                 {staff.map(res =>
                     <StaffListItem
