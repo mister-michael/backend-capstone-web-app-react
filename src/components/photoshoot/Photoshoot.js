@@ -11,6 +11,11 @@ const Photoshoot = props => {
         ApiManager.getAll("photoshoots").then(res => setPhotoshoots(res))
     }
 
+    const deletePhotoshoots = (evt) => {
+        ApiManager.delete("photoshoots", evt.target.id)
+        .then(() => props.history.push('photoshoots'))
+    }
+
     useEffect(() => {
         getPhotoshoots();
     }, [])
@@ -25,11 +30,18 @@ const Photoshoot = props => {
                 </div>
 
                 {photoshoots.map(res =>
+                <>
+                <button
+                id={res.id}
+                onClick={deletePhotoshoots}
+                >Delete</button>
                     <PhotoshootListItem
                         {...props}
                         pshoot={res}
                         key={res.id}
-                    />)}
+                    />
+                    </>
+                    )}
             </section>
         </>
     )

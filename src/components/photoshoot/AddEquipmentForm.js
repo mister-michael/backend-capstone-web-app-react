@@ -12,10 +12,10 @@ const AddEquipmentForm = props => {
 
     const photoshootId = props.photoshootId
 
-    const toggleAddbutton = () => {
-        const addButton = document.getElementById('add-button')
-        addButton.classList.toggle('hidden')
-    }
+    // const toggleAddbutton = () => {
+    //     const addButton = document.getElementById('add-button')
+    //     addButton.classList.toggle('hidden')
+    // }
 
     async function fetchPhotoshootEquipment() {
         await ApiManager.queryPhotoshootEquipment(props.photoshootId)
@@ -36,7 +36,7 @@ const AddEquipmentForm = props => {
 
     const handleEquipmentTypeSelect = (evt) => {
         fetchEquipment(parseInt(evt.target.value));
-        toggleAddbutton();
+        // toggleAddbutton();
     };
 
     //this creates a state array of id's to add, instead of changing stateToChange[taco] i need to just push the id into the array
@@ -69,6 +69,7 @@ const AddEquipmentForm = props => {
 
     const addEquipment = (evt) => {
         console.log("clicked")
+        document.getElementById(evt.target.id).classList.toggle("green")
         const equipmentObject = {
             photoshoot_id: photoshootId,
             equipment_id: evt.target.id
