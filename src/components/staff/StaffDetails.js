@@ -20,6 +20,10 @@ const StaffDetails = props => {
         if (employee.user) {
             return (
                 <>
+                <button
+                id="employee-edit-button"
+                onClick={() => props.history.push(`/employee/edit/${employee.id}`)}
+                >Edit</button>
                     <section id="employee-card">
                         <div>{employee.user.first_name} {employee.user.last_name}</div>
                         <div>{employee.city}</div>

@@ -20,6 +20,7 @@ import PhotoshootEditForm from './photoshoot/PhotoshootEditForm';
 import ClientForm from './client/ClientForm';
 import ClientEditForm from './client/ClientEditForm';
 import StaffForm from './staff/StaffForm';
+import StaffEditForm from './staff/StaffEditForm';
 
 
 const AppViews = props => {
@@ -99,6 +100,17 @@ const AppViews = props => {
             render={props => {
                 if (isAuthenticated()) {
                     return <StaffDetails 
+                    employeeId={parseInt(props.match.params.employeeId)} 
+                    {...props} />
+                }
+            }}
+            />
+            <Route
+            exact
+            path="/employee/edit/:employeeId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {
+                    return <StaffEditForm 
                     employeeId={parseInt(props.match.params.employeeId)} 
                     {...props} />
                 }
