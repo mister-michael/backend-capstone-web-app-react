@@ -48,7 +48,7 @@ const PhotoshootDetails = props => {
                             className="photoshoot-details-div"
                             onClick={() => props.history.push(`${clientDetailsUrl()}`)}>
                             {photoshoot.client.first_name} {photoshoot.client.last_name}</div>
-                        : 
+                        :
                         <div className="photoshoot-details-div">no client added</div>}
 
                     <div className="photoshoot-details-div">{photoshoot.date_scheduled}</div>
@@ -85,7 +85,10 @@ const PhotoshootDetails = props => {
 
     const deleteStaff = (evt) => {
         ApiManager.delete("photoshootstaffs", evt.target.id)
+    };
 
+    const deleteEquipment = evt => {
+        ApiManager.delete("photoshootequipments", evt.target.id)
     }
 
     useEffect(() => {
@@ -114,13 +117,19 @@ const PhotoshootDetails = props => {
                 </div>
 
                 {equipment.map(res =>
-                    <EquipmentListItem
-                        from={"photoshoot-details"}
-                        equipment={res}
-                        key={res.id}
-                        {...props}
-                        from={"photoshoot-details"}
-                    />)}
+                    <>
+                        <button
+                            id={res.id}
+                            onClick={deleteEquipment}
+                        >Delete</button >
+                        <EquipmentListItem
+                            from={"photoshoot-details"}
+                            equipment={res}
+                            key={res.id}
+                            {...props}
+                            from={"photoshoot-details"}
+                        />
+                    </>)}
 
             </div>
 
