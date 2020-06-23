@@ -35,11 +35,22 @@ const PhotoshootDetails = props => {
         if (photoshoot) {
             return (
                 <div className="photoshoot-details-container">
-                    <div className="photoshoot-details-empty-div"><a className="psd-heading">{photoshoot.name}</a></div>
-                    <div
-                        className="photoshoot-details-div"
-                        onClick={() => props.history.push(`${clientDetailsUrl()}`)}>
-                        {photoshoot.client.first_name} {photoshoot.client.last_name}</div>
+                    <div className="photoshoot-details-empty-div">
+                        <a className="psd-heading">{photoshoot.name}</a>
+                        <button
+                            id={photoshoot.id}
+                            onClick={() => props.history.push(`/photoshoot/edit/form/${photoshoot.id}`)}
+                        >Edit</button>
+                    </div>
+
+                    {photoshoot.client_id !== undefined ?
+                        <div
+                            className="photoshoot-details-div"
+                            onClick={() => props.history.push(`${clientDetailsUrl()}`)}>
+                            {photoshoot.client.first_name} {photoshoot.client.last_name}</div>
+                        : 
+                        <div className="photoshoot-details-div">no client added</div>}
+
                     <div className="photoshoot-details-div">{photoshoot.date_scheduled}</div>
                     <div className="photoshoot-details-div">{photoshoot.location}</div>
                     <div className="photoshoot-details-div">
@@ -72,7 +83,8 @@ const PhotoshootDetails = props => {
         }
     };
 
-    const addEquipmentForm = () => {
+    const deleteStaff = (evt) => {
+        ApiManager.delete("photoshootstaffs", evt.target.id)
 
     }
 
@@ -119,14 +131,21 @@ const PhotoshootDetails = props => {
                 </div>
 
                 {staff.map(res =>
-                    <StaffListItem
-                        from={"photoshoot-details"}
-                        staff={res}
-                        employeeUrl={employeeSplitUrl()}
-                        onClick={() => props.history.push(`${employeeSplitUrl()}`)}
-                        {...props}
-                        key={res.id}
-                    />)}
+                    <>
+                        <button
+                            id={res.id}
+                            onClick={deleteStaff}
+                        >Delete</button >
+                        <StaffListItem
+                            from={"photoshoot-details"}
+                            staff={res}
+                            employeeUrl={employeeSplitUrl()}
+                            onClick={() => props.history.push(`${employeeSplitUrl()}`)}
+                            {...props}
+                            key={res.id}
+                        />
+                    </>
+                )}
 
             </div>
         </>

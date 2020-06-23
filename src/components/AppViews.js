@@ -16,6 +16,7 @@ import PhotoshootForm from './photoshoot/PhotoshootForm';
 import EquipmentForm from './equipment/EquipmentForm';
 import AddEquipmentForm from './photoshoot/AddEquipmentForm';
 import AddStaffToPhotoshootForm from './staff/AddStaffToPhotoshootForm';
+import PhotoshootEditForm from './photoshoot/PhotoshootEditForm';
 
 
 const AppViews = props => {
@@ -59,6 +60,13 @@ const AppViews = props => {
             path="/photoshoot/form"
             render={props => {
                 if (isAuthenticated()) {return <PhotoshootForm {...props} />}
+            }}
+            />
+            <Route
+            exact
+            path="/photoshoot/edit/form/:photoshootId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {return <PhotoshootEditForm photoshootId={parseInt(props.match.params.photoshootId)} {...props} />}
             }}
             />
             <Route
