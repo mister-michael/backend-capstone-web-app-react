@@ -19,6 +19,7 @@ import AddStaffToPhotoshootForm from './staff/AddStaffToPhotoshootForm';
 import PhotoshootEditForm from './photoshoot/PhotoshootEditForm';
 import ClientForm from './client/ClientForm';
 import ClientEditForm from './client/ClientEditForm';
+import StaffForm from './staff/StaffForm';
 
 
 const AppViews = props => {
@@ -101,6 +102,13 @@ const AppViews = props => {
                     employeeId={parseInt(props.match.params.employeeId)} 
                     {...props} />
                 }
+            }}
+            />
+            <Route
+            exact
+            path="/employee/form"
+            render={props => {
+                if (isAuthenticated()) {return <StaffForm {...props} />}
             }}
             />
             <Route

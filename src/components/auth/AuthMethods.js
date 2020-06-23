@@ -17,6 +17,9 @@ const AuthMethods = () => {
                 }
             })
     }
+    const createEmployee = registrationInfo => {
+        return AuthManager.registerUser(registrationInfo)
+    }
 
     const login = credentials => {
         return AuthManager.loginUser(credentials)
@@ -33,7 +36,7 @@ const AuthMethods = () => {
         sessionStorage.removeItem("user-token")
     }
 
-    return { isAuthenticated, logout, login, register }
+    return { isAuthenticated, logout, login, register, createEmployee }
 }
 
 export default AuthMethods

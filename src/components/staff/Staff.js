@@ -18,6 +18,10 @@ const Staff = props => {
 
     return (
         <>
+        <button
+        id="create-employee-button"
+        onClick={() => props.history.push('/employee/form')}
+        >Create Employee</button>
         {employees.map(res => 
         <StaffListIem 
         staff={res} 
