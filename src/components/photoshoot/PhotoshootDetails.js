@@ -43,7 +43,7 @@ const PhotoshootDetails = props => {
                         >Edit</button>
                     </div>
 
-                    {photoshoot.client_id !== undefined ?
+                    {photoshoot.client !== undefined ?
                         <div
                             className="photoshoot-details-div"
                             onClick={() => props.history.push(`${clientDetailsUrl()}`)}>
