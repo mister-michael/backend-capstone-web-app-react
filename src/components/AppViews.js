@@ -36,12 +36,12 @@ const AppViews = props => {
                 return <Login {...props} />
             }}
             />
-            <Route 
+            {/* <Route 
             path="/register"
             render={props => {
                 return <Register {...props} />
             }}
-            />
+            /> */}
             <Route
             exact
             path="/photoshoots"

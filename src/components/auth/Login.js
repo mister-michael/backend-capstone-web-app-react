@@ -21,7 +21,7 @@ const Login = props => {
         };
 
         login(credentialObject).then(() => {
-            props.history.push("/")
+            props.history.push("/photoshoots")
         })
     };
 

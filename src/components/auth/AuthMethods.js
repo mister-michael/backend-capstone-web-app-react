@@ -25,8 +25,10 @@ const AuthMethods = () => {
         return AuthManager.loginUser(credentials)
             .then(parsedResponse => {
                 if ("valid" in parsedResponse && parsedResponse.valid && "token" in parsedResponse) {
-                    sessionStorage.setItem("user-token", parsedResponse.token)
-                    setIsLoggedIn(true)
+                    sessionStorage.setItem("user-token", parsedResponse.token);
+                    sessionStorage.setItem("userId", parsedResponse.userId)
+                    sessionStorage.setItem("is_superuser", parsedResponse.superuser);
+                    setIsLoggedIn(true);
                 }
             })
     }

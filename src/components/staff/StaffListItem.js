@@ -7,6 +7,7 @@ const StaffListItem = props => {
     const [employee, setEmployee] = useState({})
 
     let from = props.from
+    console.log(from)
 
 
     async function fetchEmployee() {
@@ -15,8 +16,8 @@ const StaffListItem = props => {
     }
 
     function createContent() {
-        if (from === "photoshoot-details") {
-            if (employee.user) {
+        if (employee.user)  {
+            if (from === "photoshoot-details") {
                 return (
                     <div
                         onClick={() => props.history.push(`/employees/${props.staff.employee_id}`)}
@@ -44,7 +45,7 @@ const StaffListItem = props => {
     // }
 
     useEffect(() => {
-        if (props.staff_employee_id !== undefined){
+        if (props.staff.employee_id !== undefined){
         fetchEmployee();}
     }, [])
 

@@ -5,6 +5,10 @@ import StaffDetails from './StaffDetails';
 
 const Staff = props => {
 
+    const canCreate = () => 
+        sessionStorage.getItem("is_superuser") === "true"
+    
+
     const [employees, setEmployees] = useState([])
 
     async function fetchEmployees() {
@@ -18,10 +22,12 @@ const Staff = props => {
 
     return (
         <>
+        {canCreate() ?
         <button
         id="create-employee-button"
         onClick={() => props.history.push('/employee/form')}
         >Create Employee</button>
+        : null}
         {employees.map(res => 
         <StaffListIem 
         staff={res} 
