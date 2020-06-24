@@ -21,6 +21,7 @@ import ClientForm from './client/ClientForm';
 import ClientEditForm from './client/ClientEditForm';
 import StaffForm from './staff/StaffForm';
 import StaffEditForm from './staff/StaffEditForm';
+import EquipmentEditForm from './equipment/EquipmentEditForm'
 
 
 const AppViews = props => {
@@ -143,6 +144,18 @@ const AppViews = props => {
             render={props => {
                 if (isAuthenticated()) {
                     return <EquipmentDetails 
+                    key={props.match.params.equipmentId}
+                    equipmentId={parseInt(props.match.params.equipmentId)} 
+                    {...props} />
+                }
+            }}
+            />
+            <Route
+            exact
+            path="/equipment/edit/:equipmentId(\d+)"
+            render={props => {
+                if (isAuthenticated()) {
+                    return <EquipmentEditForm 
                     key={props.match.params.equipmentId}
                     equipmentId={parseInt(props.match.params.equipmentId)} 
                     {...props} />

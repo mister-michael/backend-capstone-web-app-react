@@ -32,8 +32,7 @@ const EquipmentDetails = props => {
                         </>
                     )
                 }
-            }
-            )
+            })
         }
     }
 
@@ -42,14 +41,18 @@ const EquipmentDetails = props => {
         fetchPhotoshootEquipment();
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         createPhotoshootContent();
-    },[photoshoots])
+    }, [photoshoots])
 
 
 
     return (
         <>
+        <button
+        id="edit-equipment-button"
+        onClick={()=>props.history.push(`/equipment/edit/${equipment.id}`)}
+        >Edit</button>
             {equipment.equipment_type ?
                 <>
                     <div>Equipment: {equipment.name}</div>

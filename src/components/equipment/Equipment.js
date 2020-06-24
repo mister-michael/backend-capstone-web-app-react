@@ -17,6 +17,10 @@ const Equipment = props => {
 
     return (
         <>
+        <button
+        id="add-equipment-button"
+        onClick={()=>props.history.push('/equipment/form')}
+        >Add Equipment</button>
             {equipmentList.map(res => <EquipmentListItem equipment={res} from={"equipment-page"} {...props} key={res.id} />)}
         </>
     )
