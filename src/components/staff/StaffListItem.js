@@ -44,7 +44,8 @@ const StaffListItem = props => {
     // }
 
     useEffect(() => {
-        fetchEmployee()
+        if (props.staff_employee_id !== undefined){
+        fetchEmployee();}
     }, [])
 
     return (
