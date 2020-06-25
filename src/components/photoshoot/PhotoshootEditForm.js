@@ -108,7 +108,7 @@ const PhotoshootEditForm = props => {
                 <select
                     id="client_id"
                     onChange={handleClientSelect}
-                    value={fetchedPhotoshoot.client_id}
+                    defaultValue={fetchedPhotoshoot.client_id}
                 >
                     <option 
                     className="form-control">Select Client</option>

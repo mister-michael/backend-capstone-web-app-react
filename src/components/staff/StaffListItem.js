@@ -27,7 +27,7 @@ const StaffListItem = props => {
                     >{employee.user.first_name} {employee.user.last_name}</div>
                 )
             }
-        } else if (from === "employees-page") {
+        } else if (from === "employees-page" && props.is_active === true) {
             return (
                 <div
                 onClick={() => props.history.push(`/employees/${props.staff.id}`)}

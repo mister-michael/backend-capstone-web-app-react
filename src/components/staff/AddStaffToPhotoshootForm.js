@@ -33,6 +33,7 @@ const AddStaffToPhotoshootForm = props => {
         ApiManager.create("photoshootstaffs", photoshootEmployeeObject)
     }
 
+    let activeClass = "red"
 
     useEffect(() => {
         fetchAllStaff();
@@ -42,12 +43,13 @@ const AddStaffToPhotoshootForm = props => {
     return (
         <>
             <div>ADD STAFF FORM</div>
-            {allStaff ? allStaff.map(res =>
-                <div
-                    id={res.id}
-                    className=""
+            {allStaff ? allStaff.map(res =>{
+                {res.user.is_active === true ? activeClass = "" : activeClass="red"}
+                return <div
+                id={res.id}
+                    className={activeClass}
                     onClick={addEmployeeToPhotoshoot}
-                >{res.user.first_name} {res.user.last_name}</div>
+                >{res.user.first_name} {res.user.last_name}</div>}
             )
                 : null}
         </>

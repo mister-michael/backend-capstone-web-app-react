@@ -18,11 +18,14 @@ const StaffDetails = props => {
         }
     }
 
+    console.log(parseInt(sessionStorage.getItem("userId")))
+    
+
     const canEdit = () =>
         sessionStorage.getItem("is_superuser") === "true" || sessionStorage.getItem("userId") === `${employee.user_id}`
 
     const canActivate = () =>
-        sessionStorage.getItem("is_superuser") === "true"
+        sessionStorage.getItem("is_superuser") === "true" && sessionStorage.getItem("userId") !== `${employee.user_id}`
 
     async function fetchEmployee() {
         await ApiManager.getOne("employees", props.employeeId)

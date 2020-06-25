@@ -9,6 +9,7 @@ const PhotoshootDetails = props => {
     const [photoshoot, setPhotoshoot] = useState(null)
     const [equipment, setEquipment] = useState([])
     const [staff, setStaff] = useState([])
+    const [refresh, setRefresh] = useState(false)
 
     async function fetchPhotoshoot() {
         await ApiManager.getOne("photoshoots", props.photoshootId)
@@ -43,7 +44,7 @@ const PhotoshootDetails = props => {
                         >Edit</button>
                     </div>
 
-                    {photoshoot.client !== undefined ?
+                    {photoshoot.client !== null ?
                         <div
                             className="photoshoot-details-div"
                             onClick={() => props.history.push(`${clientDetailsUrl()}`)}>
@@ -85,6 +86,7 @@ const PhotoshootDetails = props => {
 
     const deleteStaff = (evt) => {
         ApiManager.delete("photoshootstaffs", evt.target.id)
+        setRefresh(true)
     };
 
     const deleteEquipment = evt => {
@@ -95,16 +97,17 @@ const PhotoshootDetails = props => {
         fetchPhotoshoot()
         fetchPhotoshootEquipment()
         fetchPhotoShootStaff()
-    }, [])
+        setRefresh(false)
+    }, [refresh])
 
     useEffect(() => {
         createPhotoshootContent()
-    }, [])
+    }, [refresh])
 
     useEffect(() => {
         createStaffContent()
         employeeSplitUrl()
-    }, [])
+    }, [refresh])
 
     return (
         <>
