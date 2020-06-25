@@ -1,10 +1,13 @@
 
 
-.photoshoot-container {
+.page-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 5%;
+    padding: 20px;
+    padding-top: -20px;
+    width: 90%;
+    max-width: 1000px;
     
 }
 
@@ -12,16 +15,20 @@
     display: flex;
     width: 90%;
     justify-content: center;
-    margin: 10px 10px 10px 10px
+    margin: 10px 10px 10px 10px;
+    position: relative;
+}
+
+.page-margins {
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    justify-content: center;
 }
 
 
 
-.create-button {
-    max-width: 30px;
-    max-height: 30px;
-    align-self: center;
-}
 
 
 .photoshoot-details-container {
@@ -60,7 +67,7 @@
     box-shadow: inset 8px 8px 8px #cbced1,
                 inset -8px -8px 8px #ffffff;
 }
-.photoshoot-details-empty-div {
+.bubble {
     width:90%;
     padding: 0px 15px 5px 35px;
     border-radius: 40px;
@@ -71,12 +78,16 @@
     font-family: Arial, Helvetica, sans-serif; 
     font-weight: 100;
     font-stretch: ultra-expanded;
-    font-size: xx-large;
+    /* font-size: xx-large; */
     margin-bottom: 10px;
     border-radius: 25px;
     box-shadow: inset -8px -8px 8px #d9d9df,
                 inset -8px -8px 8px #ffffff;
     border: 1px solid rgba(108, 105, 105, 0.144);
+}
+
+.bubble.bubble-title {
+    font-size: 1.7em;
 }
 
 .big-container {
@@ -115,6 +126,52 @@
     padding: 10px
     
 }
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.nothing-div {
+    position: relative;
+}
+
+
+
+
+
+
+/* BUTTONS */
+
+.create-button {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    border-radius: 50%;
+    box-shadow:  2px 2px 4px  1px rgb(185, 182, 182);
+    text-align: center;
+    font-size: 1.3em !important;
+    color: rgb(165, 163, 163);
+    inset: 1px 1px 2px green;
+    margin-bottom: 10px;
+}
+
+.delete-button {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    border-radius: 50%;
+    box-shadow:  2px 2px 4px  1px rgb(185, 182, 182);
+    text-align: center;
+    font-size: 1.3em !important;
+    color: rgb(165, 163, 163);
+    position: absolute;
+    bottom: -13px;
+    right: -12px;
+}
+
+
+
 
 
 

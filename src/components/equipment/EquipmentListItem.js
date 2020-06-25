@@ -6,23 +6,41 @@ const EquipmentListItem = props => {
 
     const from = props.from
 
-  
+
 
     const createContent = () => {
         if (from === "photoshoot-details" || from === "add-equipment") {
             return (
-                <div
-                    className="photoshoot-details-div"
-                    onClick={() => props.history.push(`/equipments/${props.equipment.equipment_id}`)}
-                >{props.equipment.equipment.name}</div>
+                <>
+                    <div
+                        className="photoshoot-details-div"
+                        onClick={() => props.history.push(`/equipments/${props.equipment.equipment_id}`)}
+                    >{props.equipment.equipment.name}</div>
+                    <div
+                        className=""
+                        id={props.equipment.id}
+                        onClick={props.deleteEquipment}
+                    >Delete</div >
+                </>
             )
         }
-        else if (from === "equipment-page" ) {
+        else if (from === "equipment-page") {
             return (
-                <div
-                    className="photoshoot-details-div"
-                    onClick={() => props.history.push(`/equipments/${props.equipment.id}`)}
-                >{props.equipment.name}</div>
+                <>
+                    <div className="nothing-div">
+
+                        <div
+                            className="photoshoot-details-div"
+                            onClick={() => props.history.push(`/equipments/${props.equipment.id}`)}
+                        >{props.equipment.name}
+                            <div
+                                className=""
+                                id={props.equipment.id}
+                                onClick={props.deleteEquipment}
+                            >Delete</div >
+                        </div>
+                    </div>
+                </>
 
             )
         }

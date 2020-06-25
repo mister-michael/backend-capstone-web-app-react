@@ -35,13 +35,14 @@ const PhotoshootDetails = props => {
     function createPhotoshootContent() {
         if (photoshoot) {
             return (
-                <div className="photoshoot-details-container">
-                    <div className="photoshoot-details-empty-div">
+                <div className="page-container">
+                    <div className="bubble">
                         <a className="psd-heading">{photoshoot.name}</a>
-                        <button
+                        <div
+                        className="create-button"
                             id={photoshoot.id}
                             onClick={() => props.history.push(`/photoshoot/edit/form/${photoshoot.id}`)}
-                        >Edit</button>
+                        >e</div>
                     </div>
 
                     {photoshoot.client !== null ?
@@ -111,54 +112,55 @@ const PhotoshootDetails = props => {
 
     return (
         <>
-            {createPhotoshootContent()}
+            <div className="bubble page-margins">
+                {createPhotoshootContent()}
 
-            <div className="photoshoot-details-container">
-                <div className="photoshoot-details-empty-div">
-                    <a className="psd-equipment-heading">Equipment</a>
-                    <button onClick={() => props.history.push(`equipment/${photoshoot.id}`)}>Add Equipment</button>
+                <div className="photoshoot-details-container">
+                    <div className="bubble">
+                        <a className="psd-equipment-heading">Equipment</a>
+                        <div className="create-button" onClick={() => props.history.push(`equipment/${photoshoot.id}`)}>+</div>
+                    </div>
+
+                    {equipment.map(res =>
+                        <>
+                            <div className="list-container">
+                                <EquipmentListItem
+                                    from={"photoshoot-details"}
+                                    equipment={res}
+                                    key={res.id}
+                                    {...props}
+                                    from={"photoshoot-details"}
+                                    deleteEquipment={deleteEquipment}
+                                />
+                            </div>
+                        </>)}
+
                 </div>
 
-                {equipment.map(res =>
-                    <>
-                        <button
-                            id={res.id}
-                            onClick={deleteEquipment}
-                        >Delete</button >
-                        <EquipmentListItem
-                            from={"photoshoot-details"}
-                            equipment={res}
-                            key={res.id}
-                            {...props}
-                            from={"photoshoot-details"}
-                        />
-                    </>)}
+                <div className="page-container">
+                    <div className="bubble">
+                        <a className="psd-equipment-heading">Staff</a>
+                        <div className="create-button" onClick={() => props.history.push(`staff/${photoshoot.id}`)}>+</div>
+                    </div>
 
-            </div>
+                    {staff.map(res =>
+                        <>
+                            <StaffListItem
+                                from={"photoshoot-details"}
+                                staff={res}
+                                employeeUrl={employeeSplitUrl()}
+                                onClick={() => props.history.push(`${employeeSplitUrl()}`)}
+                                {...props}
+                                key={res.id}
+                            />
+                            <div
+                                id={res.id}
+                                onClick={deleteStaff}
+                            >Delete</div >
+                        </>
+                    )}
 
-            <div className="photoshoot-details-container">
-                <div className="photoshoot-details-empty-div">
-                    <a className="psd-equipment-heading">Staff</a>
-                    <button onClick={() => props.history.push(`staff/${photoshoot.id}`)}>Add Staff</button>
                 </div>
-
-                {staff.map(res =>
-                    <>
-                        <button
-                            id={res.id}
-                            onClick={deleteStaff}
-                        >Delete</button >
-                        <StaffListItem
-                            from={"photoshoot-details"}
-                            staff={res}
-                            employeeUrl={employeeSplitUrl()}
-                            onClick={() => props.history.push(`${employeeSplitUrl()}`)}
-                            {...props}
-                            key={res.id}
-                        />
-                    </>
-                )}
-
             </div>
         </>
     )

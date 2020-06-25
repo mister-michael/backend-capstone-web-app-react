@@ -10,12 +10,17 @@ const PhotoshootListItem = props => {
 
     return (
         <>
-            <section className="photoshoot-details-empty-div">
+            <section className="bubble">
                 <div
                     className="photoshoot-details-container"
                     onClick={() => props.history.push(`/photoshoots/${props.pshoot.id}`)}
                 >
-                    <div className="photoshoot-details-empty-div photoshoots-title">{props.pshoot.name}</div>
+                    <div
+                        id={props.pshoot.id}
+                        className="delete-button"
+                        onClick={props.deletePhotoshoots}
+                    >x</div>
+                    <div className="bubble bubble-title">{props.pshoot.name}</div>
                     <div className="photoshoot-details-div">
                         <div className="">{dateFunction()}</div>
                         <div className="ps-list-item">{props.pshoot.location}</div>
