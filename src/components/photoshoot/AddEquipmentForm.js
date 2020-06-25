@@ -35,7 +35,8 @@ const AddEquipmentForm = props => {
     };
 
     const handleEquipmentTypeSelect = (evt) => {
-        fetchEquipment(parseInt(evt.target.value));
+        ApiManager.query("equipments", "equipment_type_id", evt.target.value)
+        .then(res => setAvailableEquipment(res))
         // toggleAddbutton();
     };
 
@@ -81,7 +82,7 @@ const AddEquipmentForm = props => {
     const deleteEquipment = (evt) => {
         const pseId = evt.target.id.split("--")[1]
         ApiManager.delete("photoshootequipments", pseId)
-        .then(() => setRefresh(true))
+            .then(() => setRefresh(true))
     }
 
     useEffect(() => {
@@ -97,20 +98,19 @@ const AddEquipmentForm = props => {
     return (
         <>
             <div>EQUIPMENT</div>
-            {/* {createEquipmentContent()} */}
             {photoshootEqiupment ? photoshootEqiupment.map(res =>
-            <>
-                <div id={res.id} key={res.id}>{res.equipment.name}</div>
-                <button id={`button--${res.id}`} onClick={deleteEquipment}>Delete</button>
+                <>
+                    <div id={res.id} key={res.id}>{res.equipment.name}</div>
+                    <button id={`button--${res.id}`} onClick={deleteEquipment}>Delete</button>
                 </>
-                )
+            )
                 : null}
 
+
             <div>Add Equipment</div>
-            <select
-                id="equipment_type_id"
-                onChange={handleEquipmentTypeSelect}
-            >
+
+            <select id="equipment_type_id" onChange={handleEquipmentTypeSelect}>
+
                 <option className="form-control">Equipment Type</option>
                 {equipmentTypes ? equipmentTypes.map(res => <option key={res.id} value={res.id}>{res.name}</option>) : null}
             </select>
