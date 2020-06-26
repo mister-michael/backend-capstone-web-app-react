@@ -25,7 +25,8 @@ const Photoshoot = props => {
             <section className="page-container">
 
                 <div className="photoshoots-header">
-                    <h2 className="photoshoots-name">Photoshoots</h2>
+                    {/* <h2 className="photoshoots-name">project M</h2> */}
+                    <div className="bubble psd-heading">photoshoots</div>
                     <div className="create-button" onClick={() => props.history.push(`/photoshoot/form`)}>+</div>
                 </div>
 

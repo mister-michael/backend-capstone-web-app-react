@@ -59,9 +59,9 @@ const EquipmentEditForm = props => {
             .then(res => setRentalHouses(res));
     };
 
-    async function fetchEquipmentById () {
+    async function fetchEquipmentById() {
         await ApiManager.getOne("equipments", equipmentId)
-        .then(res => setEquipment(res))
+            .then(res => setEquipment(res))
     }
 
     const handleSubmit = (e) => {
@@ -71,7 +71,7 @@ const EquipmentEditForm = props => {
             window.alert("please name the equiment")
         } else {
             ApiManager.update("equipments", equipmentId, equipment)
-            .then(res => props.history.push(`/equipment`))
+                .then(res => props.history.push(`/equipment`))
         }
     };
 
@@ -90,65 +90,72 @@ const EquipmentEditForm = props => {
     }, [equipmentTypes]);
 
     if (equipment) {
-    return (
-        <>
-            <input
-                type="text"
-                id="name"
-                placeholder="Equipment Name"
-                defaultValue={equipment.name}
-                onChange={handleFieldChange}
-            />
-            <input
-                type="text"
-                id="weight"
-                placeholder="Weight in KG"
-                defaultValue={equipment.weight}
-                onChange={handleFieldChange}
-            />
+        return (
+            <>
+                <section className="bubble page-margins page-container">
 
-            <select
-                id="equipment_type_id"
-                defaultValue={equipment.equipment_type_id}
-                onChange={handleOptionSelect}>
+                    <input
+                        className="photoshoot-details-div"
+                        type="text"
+                        id="name"
+                        placeholder="Equipment Name"
+                        defaultValue={equipment.name}
+                        onChange={handleFieldChange}
+                    />
+                    <input
+                        className="photoshoot-details-div"
+                        type="text"
+                        id="weight"
+                        placeholder="Weight in KG"
+                        defaultValue={equipment.weight}
+                        onChange={handleFieldChange}
+                    />
 
-                <option className="form-control">Equipment Type</option>
-                {createEquipmentTypeOptionsList()}
+                    <select
+                        id="equipment_type_id"
+                        defaultValue={equipment.equipment_type_id}
+                        onChange={handleOptionSelect}>
 
-            </select>
+                        <option className="form-control">Equipment Type</option>
+                        {createEquipmentTypeOptionsList()}
 
-            <label>Wireless?</label>
-            <input type="checkbox"
-                onChange={handleCheckBox}
-                defaultValue={equipment.wirless}
-            />
+                    </select>
 
-            <div onClick={toggleRentalForm}>Rental?</div>
+                    <label>Wireless?</label>
+                    <input type="checkbox"
+                        onChange={handleCheckBox}
+                        defaultValue={equipment.wirless}
+                    />
 
-            <div className="hidden" id="rental-form">
+                    <div onClick={toggleRentalForm}>Rental?</div>
 
-                <input
-                    type="date"
-                    id="return_date"
-                    placeholder="Return Date"
-                    defaultValue={equipment.return_date}
-                    onChange={handleFieldChange}
-                />
+                    <div className="hidden" id="rental-form">
 
-                <select
-                    id="rental_house_id"
-                    defaultValue={equipment.rental_house_id}
-                    onChange={handleOptionSelect}>
+                        <input
+                            className="photoshoot-details-div"
+                            type="date"
+                            id="return_date"
+                            placeholder="Return Date"
+                            defaultValue={equipment.return_date}
+                            onChange={handleFieldChange}
+                        />
 
-                    <option className="form-control">Rental House</option>
-                    {createRentalHouseListOptionsList()}
+                        <select
+                            id="rental_house_id"
+                            defaultValue={equipment.rental_house_id}
+                            onChange={handleOptionSelect}>
 
-                </select>
-            </div>
+                            <option className="form-control">Rental House</option>
+                            {createRentalHouseListOptionsList()}
 
-            <button id="submit-button" type="submit" onClick={handleSubmit}>submit</button>
-        </>
-    )} else {return (<div></div>)}
+                        </select>
+                    </div>
+
+                    <div className="create-button" id="submit-button" type="submit" onClick={handleSubmit}>+</div>
+                </section>
+            </>
+        )
+    } else { return (<div></div>) }
 };
 
 export default EquipmentEditForm

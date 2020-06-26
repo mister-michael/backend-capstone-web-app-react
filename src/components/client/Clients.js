@@ -21,10 +21,11 @@ const Clients = props => {
         <>
         <section className="page-container page-margins bubble">
         <div
-        className="create-button"
+        className="create-button page-margins"
         id="add-client-button"
         onClick={() => props.history.push('client/form')}
         >+</div>
+            <div className="bubble psd-heading">Clients</div>
             {clients.map(res => <ClientListItem client={res} {...props} key={res.id}/>)}
             </section>
         </>

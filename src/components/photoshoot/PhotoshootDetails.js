@@ -92,6 +92,7 @@ const PhotoshootDetails = props => {
 
     const deleteEquipment = evt => {
         ApiManager.delete("photoshootequipments", evt.target.id)
+        setRefresh(true)
     }
 
     useEffect(() => {

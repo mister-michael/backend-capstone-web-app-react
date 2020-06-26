@@ -138,6 +138,9 @@
     flex-direction: row;
 }
 
+input.photoshoot-details-div {
+    border: none !important;
+}
 
 
 

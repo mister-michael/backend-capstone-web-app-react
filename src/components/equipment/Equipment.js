@@ -28,9 +28,10 @@ const Equipment = props => {
             <section className="page-container bubble page-margins">
                 <div
                     id="add-equipment-button"
-                    className="create-button"
+                    className="create-button page-margins"
                     onClick={() => props.history.push('/equipment/form')}
                 >+</div>
+                <div className="bubble psd-heading">Equipment</div>
                 <div className="page-container">
                     {equipmentList.map(res =>
                         <>

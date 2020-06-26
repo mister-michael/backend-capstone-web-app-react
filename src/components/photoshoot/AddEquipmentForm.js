@@ -36,7 +36,7 @@ const AddEquipmentForm = props => {
 
     const handleEquipmentTypeSelect = (evt) => {
         ApiManager.query("equipments", "equipment_type_id", evt.target.value)
-        .then(res => setAvailableEquipment(res))
+            .then(res => setAvailableEquipment(res))
         // toggleAddbutton();
     };
 
@@ -70,7 +70,7 @@ const AddEquipmentForm = props => {
 
     const addEquipment = (evt) => {
         console.log("clicked")
-        document.getElementById(evt.target.id).classList.toggle("green")
+        // document.getElementById(evt.target.id).classList.toggle("green")
         const equipmentObject = {
             photoshoot_id: photoshootId,
             equipment_id: evt.target.id
@@ -97,23 +97,32 @@ const AddEquipmentForm = props => {
 
     return (
         <>
-            <div>EQUIPMENT</div>
-            {photoshootEqiupment ? photoshootEqiupment.map(res =>
-                <>
-                    <div id={res.id} key={res.id}>{res.equipment.name}</div>
-                    <button id={`button--${res.id}`} onClick={deleteEquipment}>Delete</button>
-                </>
-            )
-                : null}
+            <section className="bubble page-container page-margins">
 
+                <div className="psd-heading">EQUIPMENT</div>
+                {photoshootEqiupment ? photoshootEqiupment.map(res =>
+                    <>
+                        <div
+                            className="photoshoot-details-div"
+                            id={res.id} key={res.id}>{res.equipment.name}</div>
+                        <div
+                            className="" id={`button--${res.id}`} onClick={deleteEquipment}>Delete</div>
+                    </>
+                )
+                    : null}
+            </section>
 
-            <div>Add Equipment</div>
+            <section className="">
 
-            <select id="equipment_type_id" onChange={handleEquipmentTypeSelect}>
+                <div
+                    className="bubble">Add Equipment</div>
 
-                <option className="form-control">Equipment Type</option>
-                {equipmentTypes ? equipmentTypes.map(res => <option key={res.id} value={res.id}>{res.name}</option>) : null}
-            </select>
+                <select className="" id="equipment_type_id" onChange={handleEquipmentTypeSelect}>
+
+                    <option className="form-control">Eq.Type</option>
+                    {equipmentTypes ? equipmentTypes.map(res => <option key={res.id} value={res.id}>{res.name}</option>) : null}
+                </select>
+            </section>
 
             <div>
                 {availableEquipment ? availableEquipment.map(res =>
@@ -121,8 +130,8 @@ const AddEquipmentForm = props => {
                     <>
                         <div
                             id={res.id}
-                            className=""
-                            onClick={addEquipment}>{res.id}xxx{res.name}</div>
+                            className="photoshoot-details-div"
+                            onClick={addEquipment}>{res.name}</div>
                     </>
                 ) : null}
 
