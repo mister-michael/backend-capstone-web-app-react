@@ -49,34 +49,43 @@ const EquipmentDetails = props => {
 
     return (
         <>
-        <button
-        id="edit-equipment-button"
-        onClick={()=>props.history.push(`/equipment/edit/${equipment.id}`)}
-        >Edit</button>
-            {equipment.equipment_type ?
-                <>
-                    <div>Equipment: {equipment.name}</div>
-                    <div>Weight: {equipment.weight}.0 lbs</div>
-                    <div>Category: {equipment.equipment_type.name}</div>
 
-                    {equipment.wireless !== null ? <div>wireless</div> : <div><a className="strikethrough">wireless</a></div>}
+            <section className="bubble page-margins">
+                {equipment.equipment_type ?
+                    <>
+                        <div className="bubble psd-heading">Equipment: {equipment.name}</div>
+                    <div className="photoshoot-details-div">
 
-                    {equipment.rental_house !== null ?
-                        <>
-                            <section onClick={() => props.history.push(`/rentals/${equipment.rental_house_id}`)}>
-                                <div>Rental House:</div>
-                                <div>{equipment.rental_house.name}</div>
-                                <div>{equipment.rental_house.city}</div>
-                                <div>Return By: {equipment.return_date}</div>
-                            </section>
-                        </>
-                        : null}
+                        <div>Weight: {equipment.weight}.0 lbs</div>
+                        <div>Category: {equipment.equipment_type.name}</div>
 
-                </>
+                        {equipment.wireless !== null ? <div>wireless</div> : <div><a className="strikethrough">wireless</a></div>}
 
-                : null}
+                        {equipment.rental_house !== null ?
+                            <>
+                                <section onClick={() => props.history.push(`/rentals/${equipment.rental_house_id}`)}>
+                                    <div>Rental House:</div>
+                                    <div>{equipment.rental_house.name}</div>
+                                    <div>{equipment.rental_house.city}</div>
+                                    <div>Return By: {equipment.return_date}</div>
+                                </section>
+                            </>
+                            : null}
 
-            {createPhotoshootContent()}
+                            </div>
+                    </>
+
+                    : null}
+
+                {createPhotoshootContent()}
+
+            </section>
+
+            <div
+                className="create-button"
+                id="edit-equipment-button"
+                onClick={() => props.history.push(`/equipment/edit/${equipment.id}`)}
+            >e</div>
 
         </>
     )

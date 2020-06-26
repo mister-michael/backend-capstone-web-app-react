@@ -19,7 +19,7 @@ const StaffDetails = props => {
     }
 
     console.log(parseInt(sessionStorage.getItem("userId")))
-    
+
 
     const canEdit = () =>
         sessionStorage.getItem("is_superuser") === "true" || sessionStorage.getItem("userId") === `${employee.user_id}`
@@ -52,27 +52,34 @@ const StaffDetails = props => {
         if (employee.user) {
             return (
                 <>
-                    {canEdit() ?
-                        <button
-                            id="employee-edit-button"
-                            onClick={() => props.history.push(`/employee/edit/${employee.id}`)}
-                        >Edit</button>
-                        : null}
 
-                    <section id="employee-card">
-                        <div>{employee.user.first_name} {employee.user.last_name}</div>
+
+                    <section 
+                    className="page-container page-margins bubble"
+                    id="employee-card">
+                        <div className="psd-heading bubble">{employee.user.first_name} {employee.user.last_name}</div>
+                        <div className="photoshoot-details-div">
+
                         <div>{employee.city}</div>
                         <div>{employee.user.email}</div>
                         <div>{employee.phone}</div>
                         {employee.user.is_active === true ?
                             <div>Active</div>
                             : <div>Inactive</div>}
-                            
+                            </div>
+
                         {canActivate() ?
-                            <button
+                            <div
                                 id="acitvate-button"
                                 onClick={handleActivate}
-                            >{activateButtonText()}</button>
+                            >{activateButtonText()}</div>
+                            : null}
+                        {canEdit() ?
+                            <div
+                                className="create-button"
+                                id="employee-edit-button"
+                                onClick={() => props.history.push(`/employee/edit/${employee.id}`)}
+                            >e</div>
                             : null}
                     </section>
 

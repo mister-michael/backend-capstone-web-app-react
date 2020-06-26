@@ -33,12 +33,12 @@ const EquipmentListItem = props => {
                             className="photoshoot-details-div"
                             onClick={() => props.history.push(`/equipments/${props.equipment.id}`)}
                         >{props.equipment.name}
+                        </div>
                             <div
-                                className=""
+                                className="equipment-delete-button"
                                 id={props.equipment.id}
                                 onClick={props.deleteEquipment}
-                            >Delete</div >
-                        </div>
+                            >x</div >
                     </div>
                 </>
 
