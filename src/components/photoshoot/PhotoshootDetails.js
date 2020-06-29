@@ -39,7 +39,7 @@ const PhotoshootDetails = props => {
                     <div className="bubble">
                         <a className="psd-heading">{photoshoot.name}</a>
                         <div
-                        className="create-button"
+                            className="create-button"
                             id={photoshoot.id}
                             onClick={() => props.history.push(`/photoshoot/edit/form/${photoshoot.id}`)}
                         >e</div>
@@ -86,8 +86,11 @@ const PhotoshootDetails = props => {
     };
 
     const deleteStaff = (evt) => {
-        ApiManager.delete("photoshootstaffs", evt.target.id)
-        setRefresh(true)
+        const confirmed = window.confirm("are you sure?")
+        if (confirmed === true) {
+            ApiManager.delete("photoshootstaffs", evt.target.id)
+            setRefresh(true)
+        }
     };
 
     const deleteEquipment = evt => {

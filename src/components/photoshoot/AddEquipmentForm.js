@@ -80,9 +80,12 @@ const AddEquipmentForm = props => {
     }
 
     const deleteEquipment = (evt) => {
-        const pseId = evt.target.id.split("--")[1]
-        ApiManager.delete("photoshootequipments", pseId)
-            .then(() => setRefresh(true))
+        const confirmed = window.confirm("are you sure?")
+        if (confirmed === true) {
+            const pseId = evt.target.id.split("--")[1]
+            ApiManager.delete("photoshootequipments", pseId)
+                .then(() => setRefresh(true))
+        }
     }
 
     useEffect(() => {
@@ -135,12 +138,9 @@ const AddEquipmentForm = props => {
                     </>
                 ) : null}
 
-                {/* <button
-                    id="add-button"
-                    type="submit"
-                    className="hidden"
-                    onClick={submitAddedEquipment()}
-                >add</button> */}
+                {/* <div
+                    onClick={()=> props.history.push("/photoshoots")}>{`<`}</div> */}
+
             </div>
 
         </>

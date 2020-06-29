@@ -13,9 +13,12 @@ const Equipment = props => {
     };
 
     const handleDelete = (evt) => {
-        const equipmentToDeleteId = parseInt(evt.target.id.split("--")[1])
-        ApiManager.delete("equipments", equipmentToDeleteId)
-            .then(() => setRefresh(true))
+        const confirmed = window.confirm("are you sure?")
+        if (confirmed === true) {
+            const equipmentToDeleteId = parseInt(evt.target.id.split("--")[1])
+            ApiManager.delete("equipments", equipmentToDeleteId)
+                .then(() => setRefresh(true))
+        }
     }
 
     useEffect(() => {
@@ -36,9 +39,9 @@ const Equipment = props => {
                     {equipmentList.map(res =>
                         <>
 
-                            <EquipmentListItem equipment={res} from={"equipment-page"} {...props} key={res.id} />
+                            <EquipmentListItem equipment={res} from={"equipment-page"} {...props} key={res.id} handleDelete={handleDelete} />
                             {/* <div
-                        className="equipment-delete-button"
+                        className="equipment--button"
                             id={`delete-equipment-button--${res.id}`}
                             onClick={handleDelete}
                         >delete</div> */}

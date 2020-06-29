@@ -13,8 +13,11 @@ const ClientDetails = props => {
     };
 
     const handleDelete = () => {
-        ApiManager.delete("clients", clientId)
-            .then(() => props.history.push('/clients'))
+        const confirmed = window.confirm("are you sure?")
+        if (confirmed === true) {
+            ApiManager.delete("clients", clientId)
+                .then(() => props.history.push('/clients'))
+        }
     }
 
     useEffect(() => {

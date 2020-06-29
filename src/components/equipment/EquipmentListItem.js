@@ -36,8 +36,8 @@ const EquipmentListItem = props => {
                         </div>
                             <div
                                 className="equipment-delete-button"
-                                id={props.equipment.id}
-                                onClick={props.deleteEquipment}
+                                id={`delete-equipment-button--${props.equipment.id}`}
+                                onClick={props.handleDelete}
                             >x</div >
                     </div>
                 </>
