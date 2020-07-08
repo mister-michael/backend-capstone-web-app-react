@@ -46,7 +46,7 @@ const AppViews = props => {
             <Route 
             path="/register"
             render={props => {
-                return <Register {...props} />
+                if (isAuthenticated()) { return <Redirect to="/photoshoots"/>} else { return <Register {...props} />}
             }}
             />
             <Route
