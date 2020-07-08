@@ -2,6 +2,16 @@
 projectM is a project management application for a Photography Studio. Studio Managers and Employees are able inventory Equipment, Clients and Staff and schedule Photoshoots with applicable Equipment, Clients and Staff.
 
 ## Table of Contents
+  * [The User Experience](#the-user-experience)
+    * [Login and Register](#login-and-register)
+    * [Nav Bar](#nav-bar)
+    * [Photoshoots](#photoshoots)
+    * [Equipment](#equipment)
+    * [Clients](#clients)
+    * [Employees](#employees)
+  * [Future Plans](#future-plans)
+  * [Technologies Used](#technologies-used)
+  * [Back End Install](#back-end-install)
 
 ## The User Experience
 
@@ -76,6 +86,27 @@ From the Employees page, when users and superusers click on an employee's name t
 Superusers will also be provided an "e" affordance which will direct the superuser to the Edit Employee Form.
 
 ![employee-details](/src/readMeMedia/edit-employee.png)
+
+### Future Plans
+
+## Technologies Used
+    Python
+    Django ORM
+    Rest Framework
+    React.js
+    CSS (no libraries)
+    HTML
+    Table Plus
+    Postman
+
+## Back End Install
+
+### Clone The Project
+
+
+
+## Front End Install
+
 
 
 
