@@ -53,13 +53,18 @@ const Login = props => {
                             placeholder="password"
                         />
                     </div>
-                    
+
+
                     <button
                         type="submit"
                         id="login-button"
                         className="signin-button"
                         onClick={handleLogin}>O</button>
                 </div>
+
+                <div 
+                className="register-link"
+                onClick={()=> props.history.push("/register")}>Need to Register?</div>
             </div>
         </div>
     )
