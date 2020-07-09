@@ -143,22 +143,22 @@ Enter the following command into your terminal to clone the project to your comp
     python -m venv projectmEnv
 ```
 
-## Activate the virtual environment.
+### Activate the virtual environment.
 ```sh
     source ./projectmEnv/bin/activate
 ```
 
-## Install Dependencies.
+### Install Dependencies.
 ```sh
     pip install -r requirements.txt
 ```
 
-## Create a Superuser.
+### Create a Superuser.
 ```sh
     python manage.py superuser
 ```
 
-## Make Migrations, then Migrate.
+### Make Migrations, then Migrate.
 ```sh
     python manage.py makemigrations backendapi
 ```
@@ -166,7 +166,7 @@ Enter the following command into your terminal to clone the project to your comp
     python manage.py migrate
 ```
 
-## Load Fixture Data.
+### Load Fixture Data.
 ```sh
     python manage.py loaddata equipmenttype
 ```
@@ -177,7 +177,7 @@ Enter the following command into your terminal to clone the project to your comp
     python manage.py loaddata client
 ```
 
-## Then Start the Server
+### Then Start the Server
 ```sh
     python manage.py runserver
 ```
