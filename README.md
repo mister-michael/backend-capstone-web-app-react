@@ -1,5 +1,5 @@
 # projectM
-projectM is a project management application for a Photography Studio. Studio Managers and Employees are able inventory Equipment, Clients and Staff and schedule Photoshoots with applicable Equipment, Clients and Staff.
+__projectM__ is a project management application for a Photography Studio. Studio Managers and Employees are able inventory Equipment, Clients and Staff and schedule Photoshoots with applicable Equipment, Clients and Staff.
 
 ## Table of Contents
   * [The User Experience](#the-user-experience)
@@ -11,6 +11,7 @@ projectM is a project management application for a Photography Studio. Studio Ma
     * [Employees](#employees)
   * [Future Plans](#future-plans)
   * [Technologies Used](#technologies-used)
+  * [Front End Install](#front-end-install)
   * [Back End Install](#back-end-install)
 
 ## The User Experience
@@ -99,93 +100,84 @@ Superusers will also be provided an "e" affordance which will direct the superus
     Table Plus
     Postman
 
-## Back End Install
+## Front End Install
 
 ### Clone The Project
 
+Enter the following command into your terminal to clone the project to your computer.
+```sh
+    git clone git@github.com:mister-michael/backend-capstone-web-app-react.git
+```
 
+### Npm Install
+```sh
+    cd backend-capstone-web-app-react
+    npm install
+    npm install react-router-dom
+```
 
-## Front End Install
+After installing dependencies, start the server.
+```sh
+    npm start
+```
 
+Now that the server is running, you can visit the site.
+```sh
+    http://localhost:3000/
+```
 
+## Back End Install
 
+_you can also find these install instructions in the_ ![back-end repo](https://github.com/mister-michael/backend-capstone-api).
 
+### Clone the Api
 
+Enter the following command into your terminal to clone the project to your computer.
+```sh
+    git clone git@github.com:mister-michael/backend-capstone-api.git
+```
 
+`cd` into the direct and set up your virtual environment.
+```sh
+    cd backend-capstone-api
+    python -m venv projectmEnv
+```
 
+## Activate the virtual environment.
+```sh
+    source ./projectmEnv/bin/activate
+```
 
+## Install Dependencies.
+```sh
+    pip install -r requirements.txt
+```
 
+## Create a Superuser.
+```sh
+    python manage.py superuser
+```
 
+## Make Migrations, then Migrate.
+```sh
+    python manage.py makemigrations backendapi
+```
+```sh
+    python manage.py migrate
+```
 
+## Load Fixture Data.
+```sh
+    python manage.py loaddata equipmenttype
+```
+```sh
+    python manage.py loaddata equipment
+```
+```sh
+    python manage.py loaddata client
+```
 
-
-
----------------------
-<!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify -->
+## Then Start the Server
+```sh
+    python manage.py runserver
+```
