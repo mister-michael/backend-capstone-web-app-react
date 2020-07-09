@@ -5,3 +5,14 @@
 .hidden {
     display: none;
 }
+
+.equipment-delete-button {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    border-radius: 50%;
+    box-shadow:  2px 2px 4px  1px rgb(185, 182, 182);
+    text-align: center;
+    font-size: 1.3em !important;
+    color: rgb(165, 163, 163);
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Login from './auth/Login';
 import Register from './auth/Register';
 import AuthMethods from './auth/AuthMethods';
@@ -31,17 +31,24 @@ const AppViews = props => {
     return (
         <React.Fragment>
             <Route 
-            path="/login"
+            exact
+            path="/"
             render={props => {
-                return <Login {...props} />
+                if (isAuthenticated()) {return <Redirect to="/photoshoots"/>} else {return <Login {...props} />}
             }}
             />
-            {/* <Route 
+            <Route 
+            path="/login"
+            render={props => {
+                if (isAuthenticated()) {return <Redirect to="/photoshoots"/>} else {return <Login {...props} />}
+            }}
+            />
+            <Route 
             path="/register"
             render={props => {
-                return <Register {...props} />
+                if (isAuthenticated()) { return <Redirect to="/photoshoots"/>} else { return <Register {...props} />}
             }}
-            /> */}
+            />
             <Route
             exact
             path="/photoshoots"
@@ -194,13 +201,6 @@ const AppViews = props => {
                 if (isAuthenticated()) {return <ClientEditForm clientId={parseInt(props.match.params.clientId)}  {...props} />}
             }}
             />
-            {/* <Route
-            exact
-            path="/clients"
-            render={props => {
-                if (isAuthenticated()) {return <Clients {...props} />}
-            }}
-            /> */}
             <Route
             exact
             path="/rentals/:rentalId(\d+)"

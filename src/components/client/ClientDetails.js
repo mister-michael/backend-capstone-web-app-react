@@ -13,8 +13,11 @@ const ClientDetails = props => {
     };
 
     const handleDelete = () => {
-        ApiManager.delete("clients", clientId)
-        .then(()=> props.history.push('/clients'))
+        const confirmed = window.confirm("are you sure?")
+        if (confirmed === true) {
+            ApiManager.delete("clients", clientId)
+                .then(() => props.history.push('/clients'))
+        }
     }
 
     useEffect(() => {
@@ -23,19 +26,26 @@ const ClientDetails = props => {
 
     return (
         <>
-        <div>
-            <button
-            onClick={() => props.history.push(`/client/edit/${client.id}`)}>Edit</button>
-        </div>
-            <div>{client.first_name} {client.last_name}</div>
-            <div>{client.phone}</div>
-            <div>{client.email}</div>
-            <div>{client.address}</div>
-            <div>{client.city}, {client.state} {client.zip_code}</div>
-            <button
-            id="client-details delete-button"
-            onClick={handleDelete}
-            >Delete</button>
+            <section className="page-container page-margins bubble">
+                <div>
+                    <div
+                        className="create-button"
+                        onClick={() => props.history.push(`/client/edit/${client.id}`)}>e</div>
+                </div>
+                <div className="bubble psd-heading">{client.first_name} {client.last_name}</div>
+                <section className="photoshoot-details-div">
+
+                    <div>{client.phone}</div>
+                    <div>{client.email}</div>
+                    <div>{client.address}</div>
+                    <div>{client.city}, {client.state} {client.zip_code}</div>
+                </section>
+                <div
+                    className="create-button"
+                    id="client-details delete-button"
+                    onClick={handleDelete}
+                >x</div>
+            </section>
         </>
     )
 };

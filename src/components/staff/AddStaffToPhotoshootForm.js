@@ -42,16 +42,20 @@ const AddStaffToPhotoshootForm = props => {
 
     return (
         <>
-            <div>ADD STAFF FORM</div>
-            {allStaff ? allStaff.map(res =>{
-                {res.user.is_active === true ? activeClass = "" : activeClass="red"}
-                return <div
-                id={res.id}
-                    className={activeClass}
-                    onClick={addEmployeeToPhotoshoot}
-                >{res.user.first_name} {res.user.last_name}</div>}
-            )
-                : null}
+            <section className="">
+
+                <div className="bubble page-margins">ADD STAFF FORM</div>
+                {allStaff ? allStaff.map(res => {
+                    { res.user.is_active === true ? activeClass = "" : activeClass = "red" }
+                    return <div
+                        id={res.id}
+                        className={`${activeClass} photoshoot-details-div`}
+                        onClick={addEmployeeToPhotoshoot}
+                    >{res.user.first_name} {res.user.last_name}</div>
+                }
+                )
+                    : null}
+            </section>
         </>
     )
 };

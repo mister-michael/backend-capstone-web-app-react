@@ -12,8 +12,11 @@ const Photoshoot = props => {
     }
 
     const deletePhotoshoots = (evt) => {
-        ApiManager.delete("photoshoots", evt.target.id)
-        .then(() => props.history.push('photoshoots'))
+        const confirmed = window.confirm("are you sure?")
+        if (confirmed === true) {
+            ApiManager.delete("photoshoots", evt.target.id)
+                .then(() => props.history.push('/photoshoots'))
+        }
     }
 
     useEffect(() => {
@@ -22,26 +25,25 @@ const Photoshoot = props => {
 
     return (
         <>
-            <section className="photoshoot-container">
+            <section className="page-container">
 
                 <div className="photoshoots-header">
-                    <h2 className="photoshoots-name">Photoshoots</h2>
-                    <button className="create-button" onClick={() => props.history.push(`/photoshoot/form`)}>+</button>
+                    {/* <h2 className="photoshoots-name">project M</h2> */}
+                    <div className="bubble psd-heading">photoshoots</div>
+                    <div className="create-button" onClick={() => props.history.push(`/photoshoot/form`)}>+</div>
                 </div>
 
                 {photoshoots.map(res =>
-                <>
-                <button
-                id={res.id}
-                onClick={deletePhotoshoots}
-                >Delete</button>
-                    <PhotoshootListItem
-                        {...props}
-                        pshoot={res}
-                        key={res.id}
-                    />
+                    <>
+
+                        <PhotoshootListItem
+                            {...props}
+                            deletePhotoshoots={deletePhotoshoots}
+                            pshoot={res}
+                            key={res.id}
+                        />
                     </>
-                    )}
+                )}
             </section>
         </>
     )

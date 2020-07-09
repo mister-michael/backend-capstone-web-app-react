@@ -38,8 +38,10 @@ const StaffEditForm = props => {
 
     if (employee) {
     return (
-        <div>
+        <div className="bubble page-margins page-container">
+            <div className="bubble psd-heading">Edit</div>
             <input
+            className="photoshoot-details-div"
                 id="first_name"
                 type="text"
                 placeholder="First Name"
@@ -47,6 +49,7 @@ const StaffEditForm = props => {
                 onChange={handleFieldChange}
             />
             <input
+            className="photoshoot-details-div"
                 id="last_name"
                 type="text"
                 placeholder="Last Name"
@@ -54,6 +57,7 @@ const StaffEditForm = props => {
                 onChange={handleFieldChange}
             />
             <input
+            className="photoshoot-details-div"
                 id="email"
                 type="text"
                 placeholder="Email"
@@ -61,6 +65,7 @@ const StaffEditForm = props => {
                 onChange={handleFieldChange}
             />
             <input
+            className="photoshoot-details-div"
                 id="phone"
                 type="text"
                 placeholder="phone number (###-###-####)"
@@ -68,6 +73,7 @@ const StaffEditForm = props => {
                 onChange={handleFieldChange}
             />
             <input
+            className="photoshoot-details-div"
                 id="city"
                 type="text"
                 placeholder="City of Residence"
@@ -76,11 +82,12 @@ const StaffEditForm = props => {
             />
             
             
-            <button
+            <div
+            className="create-button"
                 id="register-button"
                 type="submit"
                 onClick={handleSubmit}
-            >Update Employee</button>
+            >+</div>
         </div>
     )} else {return (<div></div>)}
 }

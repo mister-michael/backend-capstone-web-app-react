@@ -35,7 +35,8 @@ const AddEquipmentForm = props => {
     };
 
     const handleEquipmentTypeSelect = (evt) => {
-        fetchEquipment(parseInt(evt.target.value));
+        ApiManager.query("equipments", "equipment_type_id", evt.target.value)
+            .then(res => setAvailableEquipment(res))
         // toggleAddbutton();
     };
 
@@ -69,7 +70,7 @@ const AddEquipmentForm = props => {
 
     const addEquipment = (evt) => {
         console.log("clicked")
-        document.getElementById(evt.target.id).classList.toggle("green")
+        // document.getElementById(evt.target.id).classList.toggle("green")
         const equipmentObject = {
             photoshoot_id: photoshootId,
             equipment_id: evt.target.id
@@ -79,9 +80,12 @@ const AddEquipmentForm = props => {
     }
 
     const deleteEquipment = (evt) => {
-        const pseId = evt.target.id.split("--")[1]
-        ApiManager.delete("photoshootequipments", pseId)
-        .then(() => setRefresh(true))
+        const confirmed = window.confirm("are you sure?")
+        if (confirmed === true) {
+            const pseId = evt.target.id.split("--")[1]
+            ApiManager.delete("photoshootequipments", pseId)
+                .then(() => setRefresh(true))
+        }
     }
 
     useEffect(() => {
@@ -96,24 +100,32 @@ const AddEquipmentForm = props => {
 
     return (
         <>
-            <div>EQUIPMENT</div>
-            {/* {createEquipmentContent()} */}
-            {photoshootEqiupment ? photoshootEqiupment.map(res =>
-            <>
-                <div id={res.id} key={res.id}>{res.equipment.name}</div>
-                <button id={`button--${res.id}`} onClick={deleteEquipment}>Delete</button>
-                </>
-                )
-                : null}
+            <section className="bubble page-container page-margins">
 
-            <div>Add Equipment</div>
-            <select
-                id="equipment_type_id"
-                onChange={handleEquipmentTypeSelect}
-            >
-                <option className="form-control">Equipment Type</option>
-                {equipmentTypes ? equipmentTypes.map(res => <option key={res.id} value={res.id}>{res.name}</option>) : null}
-            </select>
+                <div className="psd-heading">EQUIPMENT</div>
+                {photoshootEqiupment ? photoshootEqiupment.map(res =>
+                    <>
+                        <div
+                            className="photoshoot-details-div"
+                            id={res.id} key={res.id}>{res.equipment.name}</div>
+                        <div
+                            className="" id={`button--${res.id}`} onClick={deleteEquipment}>Delete</div>
+                    </>
+                )
+                    : null}
+            </section>
+
+            <section className="">
+
+                <div
+                    className="bubble">Add Equipment</div>
+
+                <select className="" id="equipment_type_id" onChange={handleEquipmentTypeSelect}>
+
+                    <option className="form-control">Eq.Type</option>
+                    {equipmentTypes ? equipmentTypes.map(res => <option key={res.id} value={res.id}>{res.name}</option>) : null}
+                </select>
+            </section>
 
             <div>
                 {availableEquipment ? availableEquipment.map(res =>
@@ -121,17 +133,14 @@ const AddEquipmentForm = props => {
                     <>
                         <div
                             id={res.id}
-                            className=""
-                            onClick={addEquipment}>{res.id}xxx{res.name}</div>
+                            className="photoshoot-details-div"
+                            onClick={addEquipment}>{res.name}</div>
                     </>
                 ) : null}
 
-                {/* <button
-                    id="add-button"
-                    type="submit"
-                    className="hidden"
-                    onClick={submitAddedEquipment()}
-                >add</button> */}
+                {/* <div
+                    onClick={()=> props.history.push("/photoshoots")}>{`<`}</div> */}
+
             </div>
 
         </>

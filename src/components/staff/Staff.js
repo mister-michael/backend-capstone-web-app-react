@@ -22,19 +22,25 @@ const Staff = props => {
 
     return (
         <>
-            {canCreate() ?
-                <button
-                    id="create-employee-button"
-                    onClick={() => props.history.push('/employee/form')}
-                >Create Employee</button>
-                : null}
-            {employees.map(res =>
-                <StaffListIem
-                    is_active={res.user.is_active}
-                    staff={res}
-                    from={"employees-page"}
-                    {...props}
-                    key={res.id} />)}
+            <section className="page-container bubble page-margins">
+                
+
+                {canCreate() ?
+                    <div
+                    className="create-button page-margins"
+                        id="create-employee-button"
+                        onClick={() => props.history.push('/employee/form')}
+                    >+</div>
+                    : null}
+                    <div className="bubble psd-heading">Employees</div>
+                {employees.map(res =>
+                    <StaffListIem
+                        is_active={res.user.is_active}
+                        staff={res}
+                        from={"employees-page"}
+                        {...props}
+                        key={res.id} />)}
+            </section>
         </>
     )
 };
