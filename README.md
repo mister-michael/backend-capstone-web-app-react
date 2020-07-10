@@ -88,7 +88,21 @@ Superusers will also be provided an "e" affordance which will direct the superus
 
 ![employee-details](/src/readMeMedia/edit-employee.png)
 
-### Future Plans
+## Future Plans
+
+The app I envision is much bigger than what could be produced in the two week sprint afforded for our final capstone at Nashville Software School. Because furthering my education is a vital part of the post-grad process, I feel fortunate to have afforded myself ample opportunities to do so with projectM.
+
+Future iterations will have:
+* Full CRUD comments on Photoshoots, Clients and Equipment
+* Exclusion of equipment that is no longer available on a given day.
+* Weight calculations for total photoshoot equipment.
+* Private messaging for employees.
+* A task list for employees.
+* Photo references for upcoming shoots.
+* Photo references for past shoots.
+* Photo property for equipment details.
+* Python automated Email to clients upon creation and update of photoshoots.
+
 
 ## Technologies Used
     Python
