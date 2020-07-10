@@ -142,7 +142,7 @@ Now that the server is running, you can visit the site.
 
 ## Back End Install
 
-_you can also find these install instructions in the_ ![back-end repo](https://github.com/mister-michael/backend-capstone-api).
+_you can also find these install instructions in the_ [back-end repo](https://github.com/mister-michael/backend-capstone-api).
 
 ### Clone the Api
 
